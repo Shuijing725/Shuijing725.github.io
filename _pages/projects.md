@@ -98,9 +98,10 @@ By understanding the commands from the user, DRAGON is able to guide the user to
 Through effective utilization of dialogue, the robot can ground the user’s free-form descriptions to landmarks in the environment, and give the user semantic information through spoken language. 
 We conduct a user study with blindfolded participants in an everyday indoor environment. 
 Our results demonstrate that DRAGON is able to communicate with the user smoothly, provide a good guiding experience, and connect users with their surrounding environment in an intuitive manner.   
+[[Paper]](https://arxiv.org/abs/2307.06924) [[Website]](https://sites.google.com/view/dragon-wayfinding) [[Video]](https://youtube.com/playlist?list=PLL4IPhbfiY3YkITpyLjeroak_wBn151pn&si=JNUKi5sOc7iRxJj0)  
+
 <img src="/images/wayfinding_new.png" width="450" />    
 
-[[Paper]](https://arxiv.org/abs/2307.06924) [[Website]](hhttps://sites.google.com/view/dragon-wayfinding) [[Video]](https://youtube.com/playlist?list=PLL4IPhbfiY3YkITpyLjeroak_wBn151pn&si=JNUKi5sOc7iRxJj0)  
 
 ## Machine Learning
 

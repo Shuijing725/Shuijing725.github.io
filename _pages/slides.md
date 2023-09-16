@@ -6,13 +6,13 @@ author_profile: true
 ---
 ## Talks
 - [In Chinese] [Invited talk at Shuzihuanyu](https://cepoca.cn/lectureHall/lectureRoomDetail?liveUid=a17130b4caedd1ba21311ee675248d19) (30-minute talk on my crowd navigation work at ICRA 2023)  
-  <iframe src="https://www.bilibili.com/video/BV1t14y1r7wa/"></iframe>  
+  <iframe src="//player.bilibili.com/player.html?bvid=BV1t14y1r7wa&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>    
 - [ICRA 2023] Intention-Aware Robot Crowd Navigation with Attention-Based Interaction Graph  
-  <iframe src="https://youtu.be/boDDQvZ1yV0?si=4Jxln_G2qnhQYQW5"></iframe>  
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/boDDQvZ1yV0?si=cB-F8n0axEpLbPxY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    
 - [ICRA 2022] Learning to Navigate Intersections with Unsupervised Driver Trait Inference  
-  <iframe src="https://youtu.be/hfSlciB1jew?si=iRdM9rDq382-8ihK"></iframe>  
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/hfSlciB1jew?si=EhE0BbLkbeK9wO7f" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    
 - [ICRA 2021] Decentralized Structural-RNN for Robot Crowd Navigation with Deep Reinforcement Learning  
-  <iframe src="https://youtu.be/FRWxJroI-vg?si=0vQlsPGJgMs7AxB9"></iframe>  
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/FRWxJroI-vg?si=4H-8luMOEEuhBFdy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    
 
 ## Slides
 Here are slides that summarize my work:
