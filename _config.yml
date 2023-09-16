@@ -83,7 +83,7 @@ analytics:
 author:
   name             :
   avatar           : "profile.png"
-  bio              : "AI + Robotics researcher, amateur artist, bubble tea master"
+  bio              : "AI + Robotics researcher, amateur artist, traveller"
   location         :
   employer         :
   pubmed           :
@@ -114,7 +114,7 @@ author:
   vine             :
   weibo            :
   xing             :
-  youtube          :
+  youtube          : "https://www.youtube.com/channel/UCRdZZzmk1YNBM3ZsqodtyOQ"
   wikipedia        :
 
 

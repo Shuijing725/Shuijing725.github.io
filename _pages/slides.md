@@ -1,9 +1,20 @@
 ---
 layout: archive
-title: "Tutorials"
+title: "Talks"
 permalink: /slides/
 author_profile: true
 ---
+## Talks
+- [In Chinese] [Invited talk at Shuzihuanyu](https://cepoca.cn/lectureHall/lectureRoomDetail?liveUid=a17130b4caedd1ba21311ee675248d19) (30-minute talk on my crowd navigation work at ICRA 2023)  
+  <iframe src="https://www.bilibili.com/video/BV1t14y1r7wa/"></iframe>  
+- [ICRA 2023] Intention-Aware Robot Crowd Navigation with Attention-Based Interaction Graph  
+  <iframe src="https://youtu.be/boDDQvZ1yV0?si=4Jxln_G2qnhQYQW5"></iframe>  
+- [ICRA 2022] Learning to Navigate Intersections with Unsupervised Driver Trait Inference  
+  <iframe src="https://youtu.be/hfSlciB1jew?si=iRdM9rDq382-8ihK"></iframe>  
+- [ICRA 2021] Decentralized Structural-RNN for Robot Crowd Navigation with Deep Reinforcement Learning  
+  <iframe src="https://youtu.be/FRWxJroI-vg?si=0vQlsPGJgMs7AxB9"></iframe>  
+
+## Slides
 Here are slides that summarize my work:
 - PhD preliminary exam/thesis proposal, November 2022
   - [Robot Navigation in Interactive Environments with Structured Behavior Models](/files/prelim.pdf)

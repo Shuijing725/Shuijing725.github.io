@@ -5,31 +5,43 @@ permalink: /publications/
 author_profile: true
 ---
 
-Please check my [Google Scholar](https://scholar.google.com/citations?user=I4k7ukgAAAAJ&hl=en) for details. Equal contributions are denoted by * and &dagger;. 
+Please check my [Google Scholar](https://scholar.google.com/citations?user=I4k7ukgAAAAJ&hl=en) for the most up-to-dated publications. Equal contributions are denoted by * and &dagger;. 
 
 ## Preprints
+### **DRAGON: A Dialogue-Based Robot for Assistive Navigation with Visual Language Grounding**  
+**Shuijing Liu**, Aamir Hasan, Kaiwen Hong, Runxuan Wang, Peixin Chang, Zachary Mizrachi, Justin Lin, D Livingston McPherson, Wendy A Rogers, Katherine Driggs-Campbell.      
+In submission for IEEE Robotics and Automation Letters (RA-L), 2023.     
+[[Paper]](https://arxiv.org/abs/2307.06924) [[Website]](hhttps://sites.google.com/view/dragon-wayfinding) [[Video]](https://youtube.com/playlist?list=PLL4IPhbfiY3YkITpyLjeroak_wBn151pn&si=JNUKi5sOc7iRxJj0)  
+
+## Conference
+### **A Data-Efficient Visual-Audio Representation with Intuitive Fine-tuning for Voice-Controlled Robots**  
+Peixin Chang, **Shuijing Liu**, Tianchen Ji, Neeloy Chakraborty, Kaiwen Hong, and Katherine Driggs-Champbell.   
+In Conference on Robot Learning (CoRL), 2023.   
+[[Paper]](https://openreview.net/pdf?id=dxOaNO8bge)  
+
+### **Predicting Object Interactions with Behavior Primitives: An Application in Stowing Tasks**  
+Haonan Chen, Yilong Niu, Kaiwen Hong, **Shuijing Liu**, Yixuan Wang, Yunzhu Li, Katherine Rose Driggs-Campbell 
+In Conference on Robot Learning (CoRL), 2023. (Oral)    
+[[Paper]](https://openreview.net/pdf?id=VH6WIPF4Sj)  
 
 ### **Intention Aware Robot Crowd Navigation with Attention-Based Interaction Graph**  
 __Shuijing Liu__ *, Peixin Chang *, Zhe Huang, Neeloy Chakraborty, Kaiwen Hong, Weihang Liang, D. Livingston McPherson, Junyi Geng, Katherine Driggs-Campbell.  
-In submission for IEEE International Conference on Robotics and Automation (ICRA), 2023.   
+In IEEE International Conference on Robotics and Automation (ICRA), 2023.   
 [[Paper]](https://arxiv.org/abs/2203.01821) [[Website]](https://sites.google.com/view/intention-aware-crowdnav/home) [[Video]](https://www.youtube.com/watch?v=nxpxhF019VA) [[Code]](https://github.com/Shuijing725/CrowdNav_Prediction_AttnGraph)  
 
 ### **Learning Visual-Audio Representations for Voice-Controlled Robots**  
 Peixin Chang, **Shuijing Liu**, and Katherine Driggs-Champbell.   
-In submission for IEEE International Conference on Robotics and Automation (ICRA), 2023.   
-[[Paper]](https://arxiv.org/abs/2109.02823)  
+In IEEE International Conference on Robotics and Automation (ICRA), 2023.   
+[[Paper]](https://arxiv.org/abs/2109.02823) [[Video]](https://www.youtube.com/watch?v=T83uUzSJpN4) [[Code]](https://github.com/PeixinC/VoiceControlledRobot-VAR)    
 
 ### **Occlusion-Aware Crowd Navigation Using People as Sensors**  
 Ye-Ji Mun, Masha Itkina, **Shuijing Liu**, and Katherine Driggs-Campbell.   
-In submission for IEEE International Conference on Robotics and Automation (ICRA), 2023.  
+In IEEE International Conference on Robotics and Automation (ICRA), 2023.  
 [[Paper]](https://arxiv.org/abs/2210.00552) [[Video]](https://www.youtube.com/watch?v=BG5s7w5BdME) [[Code]](https://github.com/yejimun/PaS_CrowdNav) [[Newspaper article]](https://techxplore.com/news/2022-11-autonomous-mobile-robots-crowded-spaces.html)      
-
-
-## Conference
 
 ### **Structural Attention-Based Recurrent Variational Autoencoder for Highway Vehicle Anomaly Detection**  
 Neeloy Chakraborty, Aamir Hasan *, __Shuijing Liu__ *, Tianchen Ji *, Eric Liang, D. Livingston McPherson, and Katherine Driggs-Campbell  
-To appear in International Conference on Autonomous Agents and Multiagent Systems (AAMAS), 2023. (**Full paper**)
+In International Conference on Autonomous Agents and Multiagent Systems (AAMAS), 2023. (**Full paper**)
 [[Paper]](https://arxiv.org/abs/2301.03634) [[Website]](https://sites.google.com/illinois.edu/saber-vae) [[Code]](https://gitlab.engr.illinois.edu/hubris/highway-anomaly-detection)  
 
 
