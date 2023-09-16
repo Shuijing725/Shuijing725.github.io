@@ -4,7 +4,7 @@ title: "Academic Services"
 permalink: /teaching/
 author_profile: true
 ---
-## Professional services
+## Reviews
 - Conference reviewer: ICRA, IROS, Humanoids  
 - Journal reviewer: [IEEE T-RO](https://www.ieee-ras.org/publications/t-ro), [IEEE RA-L](https://www.ieee-ras.org/publications/ra-l), [IJRR](https://journals.sagepub.com/home/ijr), [IEEE TAI](https://cis.ieee.org/publications/ieee-transactions-on-artificial-intelligence) 
 
