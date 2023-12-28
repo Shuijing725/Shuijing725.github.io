@@ -4,16 +4,15 @@ title: "Academic Services"
 permalink: /teaching/
 author_profile: true
 ---
-## Services
-Reviewer of 
-- RA-L
-- ICRA 2020, 2022, 2023
-- IROS 2022
+## Reviews
+- Conference reviewer: ICRA, IROS, Humanoids  
+- Journal reviewer: [IEEE T-RO](https://www.ieee-ras.org/publications/t-ro), [IEEE RA-L](https://www.ieee-ras.org/publications/ra-l), [IJRR](https://journals.sagepub.com/home/ijr), [IEEE TAI](https://cis.ieee.org/publications/ieee-transactions-on-artificial-intelligence) 
 
 ## Mentoring
 
-- [Neeloy Chakraborty](https://theneeloy.github.io/): BS Computer Engineering 2021, now PhD student in HCA lab.   
-- Jerry (Ruoxuan) Wang: BS Computer Engineering 2024.         
+- [Neeloy Chakraborty](https://theneeloy.github.io/): BS Computer Engineering 2021, now PhD student in UIUC.   
+- [Jerry (Ruoxuan) Wang](https://www.linkedin.com/in/runxuan-wang/): BS Computer Engineering 2024.         
+- [Justin Lin](https://www.linkedin.com/in/justin-lin-3748631b6/): BS Computer Engineering 2023, now Master student in UIUC.
 
 ## Teaching
 ### Graduate Teaching Assistant

@@ -69,7 +69,7 @@ We demonstrate that our method outperforms state-of-the-art baselines in terms o
 
 <img src="/images/itsc.jpg" width="450" /> 
 
-## Instruction Following Robot
+## Instruction Following Robot & Vision-language grounding
 
 ### Learning Visual-Audio Representations for Voice-Controlled Robots
 Inspired by sensorimotor theory, we propose a novel pipeline for task-oriented voice-controlled robots. 
@@ -89,45 +89,18 @@ While previous methods use natural language processing to translate sound to tex
 deep neural network which directly learns control polices from images and sound signals.  
 [[Paper]](https://arxiv.org/abs/1909.09172) [[Website]](https://sites.google.com/site/changpeixin/home/Research/robot_sound_interpretation) [[Video]](https://www.youtube.com/watch?v=0ONGQwhGn_Y)  
 
-<img src="/images/rsi_opening.png" width="600" />
+<img src="/images/rsi_opening.png" width="600" />   
 
+### Visual-Language Grounding for A Conversational Assistive Robot  
+Persons with visual impairments (PwVI) have difficulties understanding and navigating spaces around them.
+Motivated by recent advances in visual-language grounding and semantic navigation, we propose DRAGON, a guiding robot powered by a dialogue system and the ability to associate the environment with natural language. 
+By understanding the commands from the user, DRAGON is able to guide the user to the desired landmarks on the map, describe the environment, and answer questions from visual observations. 
+Through effective utilization of dialogue, the robot can ground the user’s free-form descriptions to landmarks in the environment, and give the user semantic information through spoken language. 
+We conduct a user study with blindfolded participants in an everyday indoor environment. 
+Our results demonstrate that DRAGON is able to communicate with the user smoothly, provide a good guiding experience, and connect users with their surrounding environment in an intuitive manner.   
+[[Paper]](https://arxiv.org/abs/2307.06924) [[Website]](https://sites.google.com/view/dragon-wayfinding) [[Video]](https://youtube.com/playlist?list=PLL4IPhbfiY3YkITpyLjeroak_wBn151pn&si=JNUKi5sOc7iRxJj0)  
 
-## Assistive Robotics 
-
-### Wayfinding Assistance Robot for People with Visual Impairments  
-Recent studies find that independent navigation is especially difficult for people with visual impairments.
-The currently available tools for wayfinding are fairly limited to white canes, guide dogs, etc.
-Providing a robot guide that could facilitate wayfinding in a variety of environments would significantly improve the quality of life and, 
-most importantly, the independence of people with vision impairments. 
-Through this project, we will explore the feasibility of robot navigation for guidance and wayfinding.   
-[[Video]](https://www.youtube.com/watch?v=BS9r5bkIass&t=67s)
-
-<img src="/images/wayfinding.jpg" width="450" />    
-
-
-
-## Computer Vision
-
-### World in Motion: Geometry-based Video Prediction with Visual Odometry Prediction and View Synthesis   
-Video prediction has a wide range of applications in planning and control for robotics. 
-However, previous do not account for camera motion and perform poorly in scenarios with moving cameras when they are deployed on autonomous vehicles and mobile robots. 
-We propose a geometry-based prediction framework named World in Motion. 
-Based on a sequence of observed frames, our method first predicts future camera poses and extracts the 3D geometry of the world, which are then jointly used to generate predicted future frames. 
-Specifically, we train a recurrent visual odometry model conditioned on raw RGB images with ground truth pose labels.
-Then, we train SynSin, a view synthesis method to generate 2D images from novel viewpoints using a 3D world representation. 
-We demonstrate that our hierarchical deterministic approach outperforms previous stochastic works on the KITTI dataset.  
-
-<img src="/images/world_in_motion.png" width="800" />
-
-### Prostate Cancer Diagnosis by Deep Learning
-Prostate cancer diagnosis requires expensive equipments and experienced trained pathologists.
-With recent advances in computer vision, we classify cancerous and healthy tissue biopsy images using ResNet. 
-Then, we use ensemble methods to boost the performance of ResNet models and achieve nearly perfect testing performance on the US Biomax prostate cancer dataset.   
-[[Abstract]](https://www.ideals.illinois.edu/handle/2142/100023) [[Paper]](/files/ECE499-Sp2018-liu-Shuijing.pdf) [[Slides]](/files/senior_thesis_presentation.pdf)
-
-<div class="imageContainer">
-<img src="/images/cancer_diagnosis.png" width="1100" />
-</div>
+<img src="/images/wayfinding_new.png" width="450" />    
 
 
 ## Machine Learning
@@ -146,12 +119,6 @@ We show that this estimator can be used to evaluate performance of RL agents in 
 Our experiments demonstrate that our method effectively evaluates performance of policies in OpenAI Gym environments and a real Kinova Gen3 arm.  
 [[Paper]](https://arxiv.org/abs/2112.11532) [[Code]](https://github.com/pulkitkatdare/offenveval)
 
-### Hierarchical Self-Imitation Learning for Single-Agent Tasks with Sparse Rewards
-Reinforcement learning problems with sparse and delayed rewards are challenging to solve.
-We propose a single agent reinforcement learning algorithm named HAC+GASIL that combines Generative Adversarial Self-Imitation Learning (GASIL) and
-Hierarchical Actor-Critic (HL).
-HAC+GASIL divides the policy of an agent into multiple levels and the hierarchical policy can be trained end-to-end.
-To evaluate HAC+GASIL, we perform experiments in OpenAI Multi-Agent Particle Environment with sparse and delayed reward stochastic scenarios.   
-[[Paper]](https://www.ideals.illinois.edu/handle/2142/110267)
+
 
 
