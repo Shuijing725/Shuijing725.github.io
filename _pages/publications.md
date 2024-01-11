@@ -22,13 +22,13 @@ In Conference on Robot Learning (CoRL), 2023.
 
 ### **Predicting Object Interactions with Behavior Primitives: An Application in Stowing Tasks**  
 Haonan Chen, Yilong Niu, Kaiwen Hong, **Shuijing Liu**, Yixuan Wang, Yunzhu Li, Katherine Driggs-Campbell 
-In Conference on Robot Learning (CoRL), 2023. <span style="color:orange">([Best Student Paper Award Finalist](https://www.corl2023.org/awards))</span>      
-[[Paper]](https://openreview.net/pdf?id=VH6WIPF4Sj)  
+In Conference on Robot Learning (CoRL), 2023. <span style="color:orange">(Best Student Paper Award Finalist [[link]](https://www.corl2023.org/awards))</span>      
+[[Paper]](https://openreview.net/pdf?id=VH6WIPF4Sj) [[Website]](https://haonan16.github.io/stow_page) [[Code]](https://github.com/haonan16/Stow/)    
 
 ### **Intention Aware Robot Crowd Navigation with Attention-Based Interaction Graph**    
 **Shuijing Liu**, Peixin Chang, Zhe Huang, Neeloy Chakraborty, Kaiwen Hong, Weihang Liang, D. Livingston McPherson, Junyi Geng, Katherine Driggs-Campbell.  
 In IEEE International Conference on Robotics and Automation (ICRA), 2023.   
-<span style="color:orange">(Best poster award at [IROS 2023 Last-Mile Robotics Workshop](https://www.lastmilerobotics.dfl.ae/home))</span>        
+<span style="color:orange">(Best poster award at IROS 2023 Last-Mile Robotics Workshop [[link]](https://www.lastmilerobotics.dfl.ae/home))</span>        
 [[Paper]](https://arxiv.org/abs/2203.01821) [[Website]](https://sites.google.com/view/intention-aware-crowdnav/home) [[Video]](https://www.youtube.com/watch?v=nxpxhF019VA) [[Code]](https://github.com/Shuijing725/CrowdNav_Prediction_AttnGraph)  
 
 ### **Learning Visual-Audio Representations for Voice-Controlled Robots**  

@@ -23,7 +23,7 @@ Previously, I earned my Bachelor's Degree in Computer Engineering from Universit
 
 <span style="color:red"> **I'm open to academic and industrial jobs, looking for postdoc/research scientist/applied scientist roles starting summer 2024. If you know any openings, please contact me. Thank you!**  </span>   
 
-<span style="color:red"> **You may find my academic [CV](/files/Shuijing_Liu_cv.pdf) here.**  </span>
+<span style="color:red"> **You may find my CV [here](/files/Shuijing_Liu_cv.pdf).**  </span>
 
 
 Research interests:

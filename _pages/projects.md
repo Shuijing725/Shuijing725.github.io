@@ -19,16 +19,17 @@ Relevant papers:
 ## Autonomous Driving
 Understanding the interactions and behaviors of surrounding drivers is essential for autonomous vehicles (AV).
 To this end, we propose novel networks to detect the abnormal drivers and predict driving styles in an unsupervised fashion, which improves navigation of AV.
-Besides this, we also build realistic multi-agent traffic simulations.
-
-<img src="/images/TraitVAE.gif" width="400" height = "300" /> <img src="/images/SaberVAE_off_road_traj.gif" width="400" height = "300" />
+Besides this, we also build realistic multi-agent traffic simulations.  
 
 Relevant papers:  
 - [Learning to Navigate Intersections with Unsupervised Driver Trait Inference](https://sites.google.com/illinois.edu/vae-trait-inference/home), ICRA 2022.
 - [Structural Attention-Based Recurrent Variational Autoencoder for Highway Vehicle Anomaly Detection](https://sites.google.com/illinois.edu/saber-vae), AAMAS 2023.
-- [Combining Model-Based Controllers and Generative Adversarial Imitation Learning for Traffic Simulation](https://ieeexplore.ieee.org/abstract/document/9922261), ITSC 2022.
+- [Combining Model-Based Controllers and Generative Adversarial Imitation Learning for Traffic Simulation](https://ieeexplore.ieee.org/abstract/document/9922261), ITSC 2022.  
 
-## Instruction Following Robot & Vision-language grounding
+<img src="/images/TraitVAE.gif" width="400" height = "300" /> <img src="/images/SaberVAE_off_road_traj.gif" width="400" height = "300" />
+
+
+## Instruction Following Robot & Visual-Language Grounding
 To enable robots to serve humans and those with disabilities in everyday environments, the robots must understand spoken language and associate commands to entities in the environment.
 We pursue two directions to achieve speech command-following robots:
 1. Learning a visual-audio representation for RL skill learning without hand-engineered reward;
