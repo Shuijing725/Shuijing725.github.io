@@ -39,9 +39,9 @@ Relevant papers:
 - [A Data-Efficient Visual-Audio Representation with Intuitive Fine-tuning for Voice-Controlled Robots](https://openreview.net/pdf?id=dxOaNO8bge), CoRL 2023.
 - [Learning Visual-Audio Representations for Voice-Controlled Robots](https://arxiv.org/abs/2109.02823), ICRA 2023.
 - [Robot Sound Interpretation: Combining Sight and Sound in Learning-Based Control](ttps://sites.google.com/site/changpeixin/home/Research/robot_sound_interpretation), IROS 2020.
-- [DRAGON: A Dialogue-Based Robot for Assistive Navigation with Visual Language Grounding](https://sites.google.com/view/dragon-wayfinding), under review.
+- [DRAGON: A Dialogue-Based Robot for Assistive Navigation with Visual Language Grounding](https://sites.google.com/view/dragon-wayfinding), under review.  
 
-<img src="/images/rsi2.gif" width="400" height = "300" />  <img src="/images/wayfinding_dialogue.png" width="400" height = "300" />    
+<img src="/images/rsi2.gif" width="400" height = "300" hspace="20" />  <img src="/images/wayfinding_dialogue.png" width="400" height = "300" />    
 
 ## Manipulation
 Real-world long-horizon manipulation problems have been a longstanding challenge in robotics. 
@@ -50,7 +50,8 @@ We demonstrate our methods in real world tasks such as stowing and scooping.
 
 Relevant papers:
 - [Predicting Object Interactions with Behavior Primitives: An Application in Stowing Tasks](https://openreview.net/pdf?id=VH6WIPF4Sj), CoRL 2023.
-- Multi-Step Scooping for Granular Object Scooping via Graph Networks and Skill Search, in preparation 2024. 
+- Multi-Step Scooping for Granular Object Scooping via Graph Networks and Skill Search, in preparation 2024.  
+
 <img src="/images/stow_ours.gif" width="400" height = "300" />
 
 ## Machine Learning
