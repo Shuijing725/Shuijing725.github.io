@@ -5,14 +5,18 @@ permalink: /teaching/
 author_profile: true
 ---
 ## Reviews
+- Journal reviewer: [IEEE T-RO](https://www.ieee-ras.org/publications/t-ro), [IEEE RA-L](https://www.ieee-ras.org/publications/ra-l), [SAGE IJRR](https://journals.sagepub.com/home/ijr), [IEEE TAI](https://cis.ieee.org/publications/ieee-transactions-on-artificial-intelligence)
 - Conference reviewer: ICRA, IROS, Humanoids  
-- Journal reviewer: [IEEE T-RO](https://www.ieee-ras.org/publications/t-ro), [IEEE RA-L](https://www.ieee-ras.org/publications/ra-l), [IJRR](https://journals.sagepub.com/home/ijr), [IEEE TAI](https://cis.ieee.org/publications/ieee-transactions-on-artificial-intelligence) 
 
 ## Mentoring
-
+### PhD students
+- [Haonan Chen](https://scholar.google.com/citations?user=SomOgNIAAAAJ&hl=en): Ph.D. student in UIUC.
+- [Kaiwen Hong](https://scholar.google.com/citations?user=pwvOhvUAAAAJ&hl=en): Ph.D. student in UIUC.
 - [Neeloy Chakraborty](https://theneeloy.github.io/): BS Computer Engineering 2021, now PhD student in UIUC.   
-- [Jerry (Ruoxuan) Wang](https://www.linkedin.com/in/runxuan-wang/): BS Computer Engineering 2024.         
+### Undergraduate students
+- [Jerry (Ruoxuan) Wang](https://www.linkedin.com/in/runxuan-wang/): BS Computer Engineering in UIUC, 2024.         
 - [Justin Lin](https://www.linkedin.com/in/justin-lin-3748631b6/): BS Computer Engineering 2023, now Master student in UIUC.
+- Zachary Mizrachi: B.S. Computer Engineering in UIUC, 2024.
 
 ## Teaching
 ### Graduate Teaching Assistant

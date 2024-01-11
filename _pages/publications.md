@@ -5,7 +5,7 @@ permalink: /publications/
 author_profile: true
 ---
 
-Please check my [Google Scholar](https://scholar.google.com/citations?user=I4k7ukgAAAAJ&hl=en) for the most up-to-dated publications.  
+Please check my [Google Scholar](https://scholar.google.com/citations?user=I4k7ukgAAAAJ&hl=en) for the most updated publications.  
 Equal contributions are denoted by * and &dagger;.  
 
 ## Preprints
@@ -21,13 +21,13 @@ In Conference on Robot Learning (CoRL), 2023.
 [[Paper]](https://openreview.net/pdf?id=dxOaNO8bge)  
 
 ### **Predicting Object Interactions with Behavior Primitives: An Application in Stowing Tasks**  
-Haonan Chen, Yilong Niu, Kaiwen Hong, **Shuijing Liu**, Yixuan Wang, Yunzhu Li, Katherine Rose Driggs-Campbell 
-In Conference on Robot Learning (CoRL), 2023. (Oral)    
+Haonan Chen, Yilong Niu, Kaiwen Hong, **Shuijing Liu**, Yixuan Wang, Yunzhu Li, Katherine Driggs-Campbell 
+In Conference on Robot Learning (CoRL), 2023. <span style="color:orange">([Best Student Paper Award Finalist](https://www.corl2023.org/awards))**</span>      
 [[Paper]](https://openreview.net/pdf?id=VH6WIPF4Sj)  
 
-### **Intention Aware Robot Crowd Navigation with Attention-Based Interaction Graph**  
-__Shuijing Liu__ *, Peixin Chang *, Zhe Huang, Neeloy Chakraborty, Kaiwen Hong, Weihang Liang, D. Livingston McPherson, Junyi Geng, Katherine Driggs-Campbell.  
-In IEEE International Conference on Robotics and Automation (ICRA), 2023.   
+### **Intention Aware Robot Crowd Navigation with Attention-Based Interaction Graph**    
+**Shuijing Liu**, Peixin Chang, Zhe Huang, Neeloy Chakraborty, Kaiwen Hong, Weihang Liang, D. Livingston McPherson, Junyi Geng, Katherine Driggs-Campbell.  
+In IEEE International Conference on Robotics and Automation (ICRA), 2023. <span style="color:orange">(Best poster award at [IROS 2023 Last-Mile Robotics Workshop](https://www.lastmilerobotics.dfl.ae/home))**</span>        
 [[Paper]](https://arxiv.org/abs/2203.01821) [[Website]](https://sites.google.com/view/intention-aware-crowdnav/home) [[Video]](https://www.youtube.com/watch?v=nxpxhF019VA) [[Code]](https://github.com/Shuijing725/CrowdNav_Prediction_AttnGraph)  
 
 ### **Learning Visual-Audio Representations for Voice-Controlled Robots**  
@@ -42,7 +42,7 @@ In IEEE International Conference on Robotics and Automation (ICRA), 2023.
 
 ### **Structural Attention-Based Recurrent Variational Autoencoder for Highway Vehicle Anomaly Detection**  
 Neeloy Chakraborty, Aamir Hasan *, __Shuijing Liu__ *, Tianchen Ji *, Eric Liang, D. Livingston McPherson, and Katherine Driggs-Campbell  
-In International Conference on Autonomous Agents and Multiagent Systems (AAMAS), 2023. (**Full paper**)
+In International Conference on Autonomous Agents and Multiagent Systems (AAMAS), 2023. (**Full paper**)   
 [[Paper]](https://arxiv.org/abs/2301.03634) [[Website]](https://sites.google.com/illinois.edu/saber-vae) [[Code]](https://gitlab.engr.illinois.edu/hubris/highway-anomaly-detection)  
 
 
