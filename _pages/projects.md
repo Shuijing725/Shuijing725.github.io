@@ -32,7 +32,8 @@ Relevant papers:
 To enable robots to serve humans and those with disabilities in everyday environments, the robots must understand spoken language and associate commands to entities in the environment.
 We pursue two directions to achieve speech command-following robots:
 1. Learning a visual-audio representation for RL skill learning without hand-engineered reward;
-2. Building a system with vision-language models to guide persons with impairments from place to place and enhance their knowledge of the environment.
+2. Building a system with vision-language models to guide persons with visual impairments from place to place and enhance their knowledge of the environment.  
+
 User studies with real human subjects show that our systems are intuitive and easy to use.  
 
 Relevant papers:
@@ -50,7 +51,7 @@ We demonstrate our methods in real world tasks such as stowing and scooping.
 
 Relevant papers:
 - [Predicting Object Interactions with Behavior Primitives: An Application in Stowing Tasks](https://openreview.net/pdf?id=VH6WIPF4Sj), CoRL 2023.
-- Multi-Step Scooping for Granular Object Scooping via Graph Networks and Skill Search, in preparation 2024.  
+- Multi-Step Planning for Granular Object Scooping via Graph Networks and Skill Search, in preparation 2024.  
 
 <img src="/images/stow_ours.gif" width="400" height = "300" />
 
