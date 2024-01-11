@@ -14,14 +14,14 @@ Relevant papers:
 - [Decentralized Structural-RNN for Robot Crowd Navigation with Deep Reinforcement Learning](https://sites.google.com/illinois.edu/crowdnav-dsrnn/home), ICRA 2021.
 - [Occlusion-Aware Crowd Navigation Using People as Sensors](https://arxiv.org/abs/2210.00552), ICRA 2023.  
 
-<img src="/images/ICRA_2023_CrowdNav_4humans.gif" height="80" hspace="20" />  <img src="/images/socialZoneGraph.png" height="80" />  
+<img src="/images/ICRA_2023_CrowdNav_4humans.gif" width="400" height = "300" hspace="20" />  <img src="/images/socialZoneGraph.png" width="400" height = "300" />  
 
 ## Autonomous Driving
 Understanding the interactions and behaviors of surrounding drivers is essential for autonomous vehicles (AV).
 To this end, we propose novel networks to detect the abnormal drivers and predict driving styles in an unsupervised fashion, which improves navigation of AV.
 Besides this, we also build realistic multi-agent traffic simulations.
 
-<img src="/images/TraitVAE.gif" height="80" /> <img src="/images/SaberVAE_off_road_traj.gif" height="80" />
+<img src="/images/TraitVAE.gif" width="400" height = "300" /> <img src="/images/SaberVAE_off_road_traj.gif" width="400" height = "300" />
 
 Relevant papers:  
 - [Learning to Navigate Intersections with Unsupervised Driver Trait Inference](https://sites.google.com/illinois.edu/vae-trait-inference/home), ICRA 2022.
@@ -30,7 +30,7 @@ Relevant papers:
 
 ## Instruction Following Robot & Vision-language grounding
 To enable robots to serve humans and those with disabilities in everyday environments, the robots must understand spoken language and associate commands to entities in the environment.
-We pursue two directions to achieve this goal:
+We pursue two directions to achieve speech command-following robots:
 1. Learning a visual-audio representation for RL skill learning without hand-engineered reward;
 2. Building a system with vision-language models to guide persons with impairments from place to place and enhance their knowledge of the environment.
 User studies with real human subjects show that our systems are intuitive and easy to use.  
@@ -41,7 +41,7 @@ Relevant papers:
 - [Robot Sound Interpretation: Combining Sight and Sound in Learning-Based Control](ttps://sites.google.com/site/changpeixin/home/Research/robot_sound_interpretation), IROS 2020.
 - [DRAGON: A Dialogue-Based Robot for Assistive Navigation with Visual Language Grounding](https://sites.google.com/view/dragon-wayfinding), under review.
 
-<img src="/images/rsi2.gif" height="80" />  <img src="/images/wayfinding_dialogue.png" height="80" />    
+<img src="/images/rsi2.gif" width="400" height = "300" />  <img src="/images/wayfinding_dialogue.png" width="400" height = "300" />    
 
 ## Manipulation
 Real-world long-horizon manipulation problems have been a longstanding challenge in robotics. 
@@ -51,7 +51,7 @@ We demonstrate our methods in real world tasks such as stowing and scooping.
 Relevant papers:
 - [Predicting Object Interactions with Behavior Primitives: An Application in Stowing Tasks](https://openreview.net/pdf?id=VH6WIPF4Sj), CoRL 2023.
 - Multi-Step Scooping for Granular Object Scooping via Graph Networks and Skill Search, in preparation 2024. 
-<img src="/images/stow_ours.gif" height="80" />
+<img src="/images/stow_ours.gif" width="400" height = "300" />
 
 ## Machine Learning
 While reinforcement learning (RL) is an appealing way to learn robot policies, it is prone to performance degradation under adversarial perturbations and sim2real gaps.
