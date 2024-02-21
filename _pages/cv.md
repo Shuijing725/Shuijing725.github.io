@@ -6,6 +6,6 @@ author_profile: true
 redirect_from:
   - /resume
 ---
-- Academic folks: Please find my CV [here](/files/Shuijing_Liu_cv.pdf).  
+- Academic folks: Please find my CV [here](/files/Shuijing_Liu_cv_2024.pdf).  
 - Industry folks: Please find my resume [here](/files/Shuijing_Liu_Resume31.pdf).
 
