@@ -11,7 +11,7 @@ Equal contributions are denoted by * and &dagger;.
 ## Preprints
 ### **DRAGON: A Dialogue-Based Robot for Assistive Navigation with Visual Language Grounding**  
 **Shuijing Liu**, Aamir Hasan, Kaiwen Hong, Runxuan Wang, Peixin Chang, Zachary Mizrachi, Justin Lin, D Livingston McPherson, Wendy A Rogers, Katherine Driggs-Campbell.      
-In submission for IEEE Robotics and Automation Letters (RA-L), 2023.     
+In IEEE Robotics and Automation Letters (RA-L), 2024.     
 [[Paper]](https://arxiv.org/abs/2307.06924) [[Website]](https://sites.google.com/view/dragon-wayfinding) [[Video]](https://youtube.com/playlist?list=PLL4IPhbfiY3YkITpyLjeroak_wBn151pn&si=JNUKi5sOc7iRxJj0)  
 
 ## Conference

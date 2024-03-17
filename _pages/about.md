@@ -13,18 +13,11 @@ Welcome to my personal website! I'm a final year PhD student in [Human-Centered 
 [University of Illinois at Urbana Champaign](https://illinois.edu), 
 advised by Professor [Katherine Driggs-Campbell](https://krdc.web.illinois.edu).
 
-My research primarily focuses on autonomous navigation in crowded and interactive environments using machine learning methods.
-I am also involved in a wide range of other projects, such as language understanding for robots, autonomous driving, and long-horizon manipulation.
- My long term goal is to enable robots to interact and collaborate with people in daily life.   
- 
-I have interned at Bosch (Summer 2023) to conduct research on autonomous driving, and at Amazon Robotics (Summer 2022) to apply manipulation research to production.
+My primary research interest is robotic systems that leverages on structured models to operate among humans.
+My long term goal is to enable robots to interact and collaborate with people in daily life.   
+[**Research statement**](Research_statement_RSS_Pioneers_2024.pdf) [**CV**](/files/Shuijing_Liu_cv_2024.pdf)   
 
 Previously, I earned my Bachelor's Degree in Computer Engineering from University of Illinois at Urbana Champaign in May 2018. Before that, I was born and raised in [Zhengzhou](https://www.google.com/maps/place/Zhengzhou,+Henan,+China/@34.7425008,113.4983694,11z/data=!3m1!4b1!4m6!3m5!1s0x35d76594f09b6a9d:0x7932ee19f4cced2c!8m2!3d34.7472499!4d113.62493!16zL20vMDFxOXpz?entry=ttu), China.
-
-<span style="color:red"> **I'm open to academic and industrial jobs, looking for postdoc/research scientist/applied scientist roles starting summer 2024. If you know any openings, please contact me. Thank you!**  </span>   
-
-<span style="color:red"> **You may find my CV [here](/files/Shuijing_Liu_cv.pdf).**  </span>
-
 
 Research interests:
 
@@ -34,6 +27,7 @@ Research interests:
 
 News
 ---
+- **01/21/2024:** Our paper ["DRAGON: A Dialogue-Based Robot for Assistive Navigation with Visual Language Grounding"](https://sites.google.com/view/dragon-wayfinding) is accepted to RA-L!
 - **08/30/2023:** Two papers in [audio-vision robotics (poster)](https://openreview.net/forum?id=dxOaNO8bge&referrer=%5Bthe%20profile%20of%20Kaiwen%20Hong%5D(%2Fprofile%3Fid%3D~Kaiwen_Hong1)) and [long-horizon manipulation (oral)](https://openreview.net/forum?id=VH6WIPF4Sj&referrer=%5Bthe%20profile%20of%20Kaiwen%20Hong%5D(%2Fprofile%3Fid%3D~Kaiwen_Hong1)) accepted in CoRL 2023! 
 - **01/2023:** Three papers in crowd navigation and audio-vision robotics accepted in ICRA 2023!
 - **01/10/2023:** Please checkout the [website](https://sites.google.com/view/intention-aware-crowdnav/home) and [open-source code](https://github.com/Shuijing725/CrowdNav_Prediction_AttnGraph) for our paper ["Intention Aware Robot Crowd Navigation with Attention-Based Interaction Graph"](https://arxiv.org/abs/2203.01821).

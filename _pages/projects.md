@@ -41,7 +41,7 @@ Relevant papers:
 - [A Data-Efficient Visual-Audio Representation with Intuitive Fine-tuning for Voice-Controlled Robots](https://openreview.net/pdf?id=dxOaNO8bge), CoRL 2023.
 - [Learning Visual-Audio Representations for Voice-Controlled Robots](https://arxiv.org/abs/2109.02823), ICRA 2023.
 - [Robot Sound Interpretation: Combining Sight and Sound in Learning-Based Control](ttps://sites.google.com/site/changpeixin/home/Research/robot_sound_interpretation), IROS 2020.
-- [DRAGON: A Dialogue-Based Robot for Assistive Navigation with Visual Language Grounding](https://sites.google.com/view/dragon-wayfinding), under review.  
+- [DRAGON: A Dialogue-Based Robot for Assistive Navigation with Visual Language Grounding](https://sites.google.com/view/dragon-wayfinding), RA-L 2024.  
 
 <img src="/images/rsi2.gif" width="400" height = "300" hspace="20" />  <img src="/images/wayfinding_dialogue.png" width="400" height = "300" />    
 
