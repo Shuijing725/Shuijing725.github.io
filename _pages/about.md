@@ -24,6 +24,10 @@ Research interests:
 - Human-Robot Interaction
 - Machine Learning
 
+For junior PhD/Master/undergraduate students: I dedicate 30 minutes every two weeks to offer mentorship/advising/help to junior students or whoever in need. 
+Topics include but are not limited to AI/robotics/HRI research, graduate school application, career development, life, etc. 
+If you would like to chat with me, please fill [this form](https://docs.google.com/forms/d/e/1FAIpQLSdrKp_LFAzOSeKd_V_cAKGZmH5hpAprnxb8cPDXMhhrhiWR5w/viewform?usp=sf_link) to schedule.
+
 News
 ---
 - **01/21/2024:** Our paper ["DRAGON: A Dialogue-Based Robot for Assistive Navigation with Visual Language Grounding"](https://sites.google.com/view/dragon-wayfinding) is accepted to RA-L!
