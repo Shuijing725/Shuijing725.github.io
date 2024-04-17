@@ -12,7 +12,7 @@ Equal contributions are denoted by * and &dagger;.
 ### **DRAGON: A Dialogue-Based Robot for Assistive Navigation with Visual Language Grounding**  
 **Shuijing Liu**, Aamir Hasan, Kaiwen Hong, Runxuan Wang, Peixin Chang, Zachary Mizrachi, Justin Lin, D Livingston McPherson, Wendy A Rogers, Katherine Driggs-Campbell.      
 In IEEE Robotics and Automation Letters (RA-L), 2024.     
-[[Paper]](https://arxiv.org/abs/2307.06924) [[Website]](https://sites.google.com/view/dragon-wayfinding) [[Video]](https://youtube.com/playlist?list=PLL4IPhbfiY3YkITpyLjeroak_wBn151pn&si=JNUKi5sOc7iRxJj0)  
+[[Paper]](https://arxiv.org/abs/2307.06924) [[Website]](https://sites.google.com/view/dragon-wayfinding) [[Video]](https://youtube.com/playlist?list=PLL4IPhbfiY3YkITpyLjeroak_wBn151pn&si=JNUKi5sOc7iRxJj0) [Code]](https://github.com/Shuijing725/Dragon_Wayfinding/)   
 
 ## Conference
 ### **A Data-Efficient Visual-Audio Representation with Intuitive Fine-tuning for Voice-Controlled Robots**  
@@ -27,7 +27,7 @@ In Conference on Robot Learning (CoRL), 2023. <span style="color:orange">(Best S
 
 ### **Intention Aware Robot Crowd Navigation with Attention-Based Interaction Graph**    
 **Shuijing Liu**, Peixin Chang, Zhe Huang, Neeloy Chakraborty, Kaiwen Hong, Weihang Liang, D. Livingston McPherson, Junyi Geng, Katherine Driggs-Campbell.  
-In IEEE International Conference on Robotics and Automation (ICRA), 2023.   
+In IEEE International Conference on Robotics and Automation (ICRA), 2023.     
 <span style="color:orange">(Best poster award at IROS 2023 Last-Mile Robotics Workshop [[link]](https://www.lastmilerobotics.dfl.ae/home))</span>        
 [[Paper]](https://arxiv.org/abs/2203.01821) [[Website]](https://sites.google.com/view/intention-aware-crowdnav/home) [[Video]](https://www.youtube.com/watch?v=nxpxhF019VA) [[Code]](https://github.com/Shuijing725/CrowdNav_Prediction_AttnGraph)  
 
