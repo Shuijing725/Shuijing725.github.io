@@ -12,7 +12,7 @@ Equal contributions are denoted by * and &dagger;.
 ### **DRAGON: A Dialogue-Based Robot for Assistive Navigation with Visual Language Grounding**  
 **Shuijing Liu**, Aamir Hasan, Kaiwen Hong, Runxuan Wang, Peixin Chang, Zachary Mizrachi, Justin Lin, D Livingston McPherson, Wendy A Rogers, Katherine Driggs-Campbell.      
 In IEEE Robotics and Automation Letters (RA-L), 2024.     
-[[Paper]](https://arxiv.org/abs/2307.06924) [[Website]](https://sites.google.com/view/dragon-wayfinding) [[Video]](https://youtube.com/playlist?list=PLL4IPhbfiY3YkITpyLjeroak_wBn151pn&si=JNUKi5sOc7iRxJj0) [Code]](https://github.com/Shuijing725/Dragon_Wayfinding/)   
+[[Paper]](https://arxiv.org/abs/2307.06924) [[Website]](https://sites.google.com/view/dragon-wayfinding) [[Video]](https://youtube.com/playlist?list=PLL4IPhbfiY3YkITpyLjeroak_wBn151pn&si=JNUKi5sOc7iRxJj0) [[Code]](https://github.com/Shuijing725/Dragon_Wayfinding/)   
 
 ## Conference
 ### **A Data-Efficient Visual-Audio Representation with Intuitive Fine-tuning for Voice-Controlled Robots**  
@@ -21,8 +21,9 @@ In Conference on Robot Learning (CoRL), 2023.
 [[Paper]](https://openreview.net/pdf?id=dxOaNO8bge)  
 
 ### **Predicting Object Interactions with Behavior Primitives: An Application in Stowing Tasks**  
-Haonan Chen, Yilong Niu, Kaiwen Hong, **Shuijing Liu**, Yixuan Wang, Yunzhu Li, Katherine Driggs-Campbell 
-In Conference on Robot Learning (CoRL), 2023. <span style="color:orange">(Best Student Paper Award Finalist [[link]](https://www.corl2023.org/awards))</span>      
+Haonan Chen, Yilong Niu, Kaiwen Hong, **Shuijing Liu**, Yixuan Wang, Yunzhu Li, Katherine Driggs-Campbell.   
+In Conference on Robot Learning (CoRL), 2023.  
+<span style="color:orange">(Best Student Paper Award Finalist [[link]](https://www.corl2023.org/awards))</span>        
 [[Paper]](https://openreview.net/pdf?id=VH6WIPF4Sj) [[Website]](https://haonan16.github.io/stow_page) [[Code]](https://github.com/haonan16/Stow/)    
 
 ### **Intention Aware Robot Crowd Navigation with Attention-Based Interaction Graph**    
