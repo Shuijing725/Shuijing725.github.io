@@ -25,12 +25,13 @@ Areas of research:
 - Human-Robot Interaction
 - Machine Learning
 
-For junior PhD/Master/undergraduate students: I dedicate 30 minutes every two weeks to offer mentorship/advising/help to junior students or whoever in need. 
-Topics include but are not limited to AI/robotics/HRI research, graduate school application, career development, life, etc. 
+For junior PhD/Master/undergraduate students: I dedicate 30 minutes every two weeks to offer mentorship/advising/help, especially for students from underrepresented groups or whoever is in need. 
+Topics include but are not limited to AI/robotics/HRI research, graduate school application, career development, life, etc.
 If you would like to chat with me, please fill [this form](https://docs.google.com/forms/d/e/1FAIpQLSdrKp_LFAzOSeKd_V_cAKGZmH5hpAprnxb8cPDXMhhrhiWR5w/viewform?usp=sf_link) to schedule.
 
 News
 ---
+- **05/23/2024:** I passed my thesis defense! Big thanks to my advisor, my committee, and my colleagues in HCA lab!
 - **01/21/2024:** Our paper ["DRAGON: A Dialogue-Based Robot for Assistive Navigation with Visual Language Grounding"](https://sites.google.com/view/dragon-wayfinding) is accepted to RA-L!
 - **08/30/2023:** Two papers in [audio-vision robotics (poster)](https://openreview.net/forum?id=dxOaNO8bge&referrer=%5Bthe%20profile%20of%20Kaiwen%20Hong%5D(%2Fprofile%3Fid%3D~Kaiwen_Hong1)) and [long-horizon manipulation (oral)](https://openreview.net/forum?id=VH6WIPF4Sj&referrer=%5Bthe%20profile%20of%20Kaiwen%20Hong%5D(%2Fprofile%3Fid%3D~Kaiwen_Hong1)) accepted in CoRL 2023! 
 - **01/2023:** Three papers in crowd navigation and audio-vision robotics accepted in ICRA 2023!
