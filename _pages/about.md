@@ -8,14 +8,16 @@ redirect_from:
   - /about.html
 ---
 
-Welcome to my personal website! I'm a final year PhD student in [Human-Centered Autonomy Lab](https://publish.illinois.edu/humancenteredautonomy/) in 
+Welcome to my personal website! I'm a postdoc scholar in [UT Austin Robot Perception and Learning Lab](https://rpl.cs.utexas.edu/), 
+advised by Professor [Yuke Zhu](https://yukezhu.me/).
+In 2024, I obtained my PhD from [Human-Centered Autonomy Lab](https://publish.illinois.edu/humancenteredautonomy/) in 
 [Electrical and Computer Engineering](https://ece.illinois.edu), 
 [University of Illinois at Urbana Champaign](https://illinois.edu), 
 advised by Professor [Katherine Driggs-Campbell](https://krdc.web.illinois.edu).
 
 My primary research interest is robotic systems that leverages on structured models to operate among humans.
 My long term goal is to enable robots to interact and collaborate with people in daily life. I advocate for robot learning from the people, with the people, and for the people.      
-[**[CV]**](/files/Shuijing_Liu_cv_2024.pdf)  [**[Research statement - 1 page]**](/files/Research_statement_rising_stars_2024.pdf)  [**[Research statement - 2 pages]**](/files/Research_statement_RSS_Pioneers_2024.pdf)  
+[**[CV]**](/files/Shuijing_Liu_08_2024-postdoc.pdf)  [**[Research statement]**](/files/Research_statement_rising_stars_2024.pdf)     
  
 
 Previously, I earned my Bachelor's Degree in Computer Engineering from University of Illinois at Urbana Champaign in May 2018. Before that, I was born and raised in [Zhengzhou](https://www.google.com/maps/place/Zhengzhou,+Henan,+China/@34.7425008,113.4983694,11z/data=!3m1!4b1!4m6!3m5!1s0x35d76594f09b6a9d:0x7932ee19f4cced2c!8m2!3d34.7472499!4d113.62493!16zL20vMDFxOXpz?entry=ttu), China.
@@ -31,6 +33,7 @@ If you would like to chat with me, please fill [this form](https://docs.google.c
 
 News
 ---
+- **08/16/2024:** I started my postdoc at UT Austin RPL Lab! Also, I'm selected as an [MIT EECS Rising Star in 2024](https://risingstars-eecs.mit.edu/participants/?y=2024&area=robotics)!
 - **05/23/2024:** I passed my thesis defense! Big thanks to my advisor, my committee, and my colleagues in HCA lab!
 - **01/21/2024:** Our paper ["DRAGON: A Dialogue-Based Robot for Assistive Navigation with Visual Language Grounding"](https://sites.google.com/view/dragon-wayfinding) is accepted to RA-L!
 - **08/30/2023:** Two papers in [audio-vision robotics (poster)](https://openreview.net/forum?id=dxOaNO8bge&referrer=%5Bthe%20profile%20of%20Kaiwen%20Hong%5D(%2Fprofile%3Fid%3D~Kaiwen_Hong1)) and [long-horizon manipulation (oral)](https://openreview.net/forum?id=VH6WIPF4Sj&referrer=%5Bthe%20profile%20of%20Kaiwen%20Hong%5D(%2Fprofile%3Fid%3D~Kaiwen_Hong1)) accepted in CoRL 2023! 

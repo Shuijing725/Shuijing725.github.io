@@ -5,6 +5,9 @@ permalink: /slides/
 author_profile: true
 ---
 ## Talks
+- [Job talk/PhD research summary] Robot Learning to Interact in Human Spaces
+  <iframe width="280" height="158" src="https://www.youtube.com/embed/e5RqOY9z1V8?si=RIhbDWOMSWWBC7dv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    
+
 - [In Chinese] [Invited talk at Shuzihuanyu](https://cepoca.cn/lectureHall/lectureRoomDetail?liveUid=a17130b4caedd1ba21311ee675248d19) (30-minute talk on my crowd navigation work at ICRA 2023)  
   <iframe width="280" height="158" src="//player.bilibili.com/player.html?bvid=BV1t14y1r7wa&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>    
 
