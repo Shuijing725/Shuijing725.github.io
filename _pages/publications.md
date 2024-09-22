@@ -10,11 +10,11 @@ Equal contributions are denoted by * and &dagger;.
 
 ## Preprints
 ### **Sim-to-Real Adaptation with Graph-Based Neural Dynamics for Granular Object Manipulation**  
-Kaiwen Hong, Haonan Chen, Runxuan Wang, Kaylan Wang, Mingtong Zhang, **Shuijing Liu**, Yunzhu Li, Katherine Driggs-Campbell.           
+Kaiwen Hong, Haonan Chen *, Runxuan Wang *, Kaylan Wang *, Mingtong Zhang, **Shuijing Liu**, Yunzhu Li, Katherine Driggs-Campbell.           
 Under review for IEEE International Conference on Robotics and Automation (ICRA), 2025.     
 
 ### **Learning Coordinated Bimanual Manipulation Policies using State Diffusion and Inverse Dynamics Models**  
-Haonan Chen, Jiaming Xu, Lily Sheng, Tianchen Ji, **Shuijing Liu**, Yunzhu Li, Katherine Driggs-Campbell.         
+Haonan Chen, Jiaming Xu *, Lily Sheng *, Tianchen Ji, **Shuijing Liu**, Yunzhu Li, Katherine Driggs-Campbell.         
 Under review for IEEE International Conference on Robotics and Automation (ICRA), 2025.    
 
 ### **Structured Graph Network for Constrained Robot Crowd Navigation with Low Fidelity Simulation**  
