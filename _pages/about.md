@@ -27,6 +27,8 @@ Areas of research:
 - Human-Robot Interaction
 - Machine Learning
 
+**I'm open to research discussion and collaboration, please feel free to get in touch!**
+
 For junior PhD/Master/undergraduate students: I dedicate 30 minutes every two weeks to offer mentorship/advising/help, especially for students from underrepresented groups or whoever is in need. 
 Topics include but are not limited to AI/robotics/HRI research, graduate school application, career development, life, etc.
 If you would like to chat with me, please fill [this form](https://docs.google.com/forms/d/e/1FAIpQLSdrKp_LFAzOSeKd_V_cAKGZmH5hpAprnxb8cPDXMhhrhiWR5w/viewform?usp=sf_link) to schedule.
