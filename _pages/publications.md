@@ -9,18 +9,17 @@ Please check my [Google Scholar](https://scholar.google.com/citations?user=I4k7u
 Equal contributions are denoted by * and &dagger;.  
 
 ## Preprints
+### **HEIGHT: Heterogeneous Interaction Graph Transformer for Robot Navigation in Crowded and Constrained Environments**  
+**Shuijing Liu**, Haochen Xia, Fatemeh Cheraghi Pouria, Kaiwen Hong, Neeloy Chakraborty, Katherine Driggs-Campbell.  
+[[Paper]](https://arxiv.org/abs/2411.12150) [[Website]](https://sites.google.com/view/crowdnav-height/home) [[Video]](https://www.youtube.com/playlist?list=PLL4IPhbfiY3YkITpyLjeroak_wBn151pn)       
+
 ### **Sim-to-Real Adaptation with Graph-Based Neural Dynamics for Granular Object Manipulation**  
 Kaiwen Hong, Haonan Chen *, Runxuan Wang *, Kaylan Wang *, Mingtong Zhang, **Shuijing Liu**, Yunzhu Li, Katherine Driggs-Campbell.           
 Under review for IEEE International Conference on Robotics and Automation (ICRA), 2025.     
 
 ### **Learning Coordinated Bimanual Manipulation Policies using State Diffusion and Inverse Dynamics Models**  
 Haonan Chen, Jiaming Xu *, Lily Sheng *, Tianchen Ji, **Shuijing Liu**, Yunzhu Li, Katherine Driggs-Campbell.         
-Under review for IEEE International Conference on Robotics and Automation (ICRA), 2025.    
-
-### **Structured Graph Network for Constrained Robot Crowd Navigation with Low Fidelity Simulation**  
-**Shuijing Liu**, Kaiwen Hong, Neeloy Chakraborty, Katherine Driggs-Campbell.  
-[[Paper]](https://arxiv.org/abs/2405.16830)  [[Website & Video]](https://sites.google.com/view/constrained-crowdnav/home)         
-
+Under review for IEEE International Conference on Robotics and Automation (ICRA), 2025.
 
 ### **Topology-Guided ORCA: Smooth Multi-Agent Motion Planning in Constrained Environments**  
 Fatemeh Cheraghi Pouria, Zhe Huang, Ananya Yammanuru, **Shuijing Liu**, Katherine Driggs-Campbell.    

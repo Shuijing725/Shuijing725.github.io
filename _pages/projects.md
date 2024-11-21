@@ -10,11 +10,12 @@ To tackle these problems, we propose a novel reinforcement learning planner that
 In addition, we incorporate human trajectory prediction into the planner to increase safety and social-awareness of the robot.   
 
 Relevant papers:  
+- [HEIGHT: Heterogeneous Interaction Graph Transformer for Robot Navigation in Crowded and Constrained Environments](https://sites.google.com/view/crowdnav-height/home), under review.
 - [Intention Aware Robot Crowd Navigation with Attention-Based Interaction Graph](https://sites.google.com/view/intention-aware-crowdnav/home), ICRA 2023.
 - [Decentralized Structural-RNN for Robot Crowd Navigation with Deep Reinforcement Learning](https://sites.google.com/illinois.edu/crowdnav-dsrnn/home), ICRA 2021.
 - [Occlusion-Aware Crowd Navigation Using People as Sensors](https://arxiv.org/abs/2210.00552), ICRA 2023.  
 
-<img src="/images/ICRA_2023_CrowdNav_4humans.gif" width="400" height = "300" hspace="20" />  <img src="/images/socialZoneGraph.png" width="400" height = "300" />  
+<img src="/images/crowdnav3.gif" width="400" height = "300" hspace="20" />  <img src="/images/socialZoneGraph.png" width="400" height = "300" />  
 
 ## Autonomous Driving
 Understanding the interactions and behaviors of surrounding drivers is essential for autonomous vehicles (AV).
@@ -54,7 +55,7 @@ Relevant papers:
 - [Predicting Object Interactions with Behavior Primitives: An Application in Stowing Tasks](https://openreview.net/pdf?id=VH6WIPF4Sj), CoRL 2023.
 - Multi-Step Planning for Granular Object Scooping via Graph Networks and Skill Search, in preparation 2024.  
 
-<img src="/images/stow_ours.gif" width="400" height = "300" />
+<img src="/images/stow_ours.gif" width="400" height = "300" />  <img src="/images/scoop.gif" width="400" height = "300" />  
 
 ## Machine Learning
 While reinforcement learning (RL) is an appealing way to learn robot policies, it is prone to performance degradation under adversarial perturbations and sim2real gaps.
