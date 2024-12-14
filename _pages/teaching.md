@@ -18,7 +18,7 @@ author_profile: true
 
 ### Master students
 - [Eric (Weihang) Liang](https://www.linkedin.com/in/weihang-eric-liang-5147a014a/): M.S. Electrical and Computer Engineering, now at Tesla.
-- 
+
 ### Undergraduate students
 - [Simon (Haochen) Xia](https://www.linkedin.com/in/haochen-xia-614bb0251/): B.S. Computer Engineering 2026.
 - [Jerry (Ruoxuan) Wang](https://www.linkedin.com/in/runxuan-wang/): BS Computer Engineering in UIUC, 2024.         
