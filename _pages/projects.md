@@ -12,7 +12,7 @@ In addition, we incorporate human trajectory prediction into the planner to incr
 Relevant papers:  
 - [HEIGHT: Heterogeneous Interaction Graph Transformer for Robot Navigation in Crowded and Constrained Environments](https://sites.google.com/view/crowdnav-height/home), under review.
 - [Intention Aware Robot Crowd Navigation with Attention-Based Interaction Graph](https://sites.google.com/view/intention-aware-crowdnav/home), ICRA 2023.
-- [Decentralized Structural-RNN for Robot Crowd Navigation with Deep Reinforcement Learning](https://sites.google.com/illinois.edu/crowdnav-dsrnn/home), ICRA 2021.
+- [Decentralized Structural-RNN for Robot Crowd Navigation with Deep Reinforcement Learning](https://sites.google.com/view/crowdnav-ds-rnn/home), ICRA 2021.
 - [Occlusion-Aware Crowd Navigation Using People as Sensors](https://arxiv.org/abs/2210.00552), ICRA 2023.  
 
 <img src="/images/crowdnav3.gif" width="400" height = "300" hspace="20" />  <img src="/images/socialZoneGraph.png" width="400" height = "300" />  
@@ -23,7 +23,7 @@ To this end, we propose novel networks to detect the abnormal drivers and predic
 Besides this, we also build realistic multi-agent traffic simulations.  
 
 Relevant papers:  
-- [Learning to Navigate Intersections with Unsupervised Driver Trait Inference](https://sites.google.com/illinois.edu/vae-trait-inference/home), ICRA 2022.
+- [Learning to Navigate Intersections with Unsupervised Driver Trait Inference](https://sites.google.com/view/vae-trait-inference/home), ICRA 2022.
 - [Structural Attention-Based Recurrent Variational Autoencoder for Highway Vehicle Anomaly Detection](https://sites.google.com/illinois.edu/saber-vae), AAMAS 2023.
 - [Combining Model-Based Controllers and Generative Adversarial Imitation Learning for Traffic Simulation](https://ieeexplore.ieee.org/abstract/document/9922261), ITSC 2022.  
 
