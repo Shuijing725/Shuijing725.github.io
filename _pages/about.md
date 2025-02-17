@@ -15,20 +15,18 @@ In 2024, I obtained my PhD from [Human-Centered Autonomy Lab](https://publish.il
 [University of Illinois at Urbana Champaign](https://illinois.edu), 
 advised by Professor [Katherine Driggs-Campbell](https://krdc.web.illinois.edu).
 
-Research Interests:   
+Research Interests
+---
 I’m excited about enabling robots to operate in unstructured human environments, such as our homes and offices.
 I consider human modeling, interaction reasoning, and decision making as essential capabilities of such robots.
 Thus, my research is at the intersection of **robot learning** and **human-robot interaction**. 
 I use AI tools to develop fundamental learning paradigms for human-centered robotics problems. 
 My research is inspired by and deployed in challenging real-world applications, including navigation in human crowds, autonomous driving, instruction following, and assistive robots for people with disabilities.   
+[**[CV]**](/files/Shuijing_Liu_cv 02_2025.pdf)  [**[Research statement]**](/files/Research_statement_RSS_Pioneers_2025_not_anonymous.pdf)   
 
-My long term goal is to enable robots to interact and collaborate with people in daily life. I advocate for robot learning from the people, with the people, and for the people.      
-[**[CV]**](/files/Shuijing_Liu_cv 02_2025.pdf)  [**[Research statement]**](/files/Research_statement_RSS_Pioneers_2025_not_anonymous.pdf)     
- 
+My long term goal is to enable robots to interact and collaborate with people in daily life. I advocate for robot learning from the people, with the people, and for the people.   
 
 Previously, I earned my Bachelor's Degree in Computer Engineering from University of Illinois at Urbana Champaign in May 2018. Before that, I was born and raised in [Zhengzhou](https://www.google.com/maps/place/Zhengzhou,+Henan,+China/@34.7425008,113.4983694,11z/data=!3m1!4b1!4m6!3m5!1s0x35d76594f09b6a9d:0x7932ee19f4cced2c!8m2!3d34.7472499!4d113.62493!16zL20vMDFxOXpz?entry=ttu), China.
-
-
 
 **I'm open to research discussion and collaboration, please feel free to get in touch!**  
 
