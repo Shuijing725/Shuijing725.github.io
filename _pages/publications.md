@@ -12,13 +12,10 @@ Equal contributions are denoted by * and &dagger;.
 ### **HEIGHT: Heterogeneous Interaction Graph Transformer for Robot Navigation in Crowded and Constrained Environments**  
 **Shuijing Liu**, Haochen Xia, Fatemeh Cheraghi Pouria, Kaiwen Hong, Neeloy Chakraborty, Katherine Driggs-Campbell.  
 [[Paper]](https://arxiv.org/abs/2411.12150) [[Website]](https://sites.google.com/view/crowdnav-height/home) [[Video]](https://www.youtube.com/playlist?list=PLL4IPhbfiY3YkITpyLjeroak_wBn151pn)       
+Under review for IEEE Transactions on Robotics (T-RO).    
 
 ### **Sim-to-Real Adaptation with Graph-Based Neural Dynamics for Granular Object Manipulation**  
 Kaiwen Hong, Haonan Chen *, Runxuan Wang *, Kaylan Wang *, Mingtong Zhang, **Shuijing Liu**, Yunzhu Li, Katherine Driggs-Campbell.           
-Under review for IEEE International Conference on Robotics and Automation (ICRA), 2025.     
-
-### **Learning Coordinated Bimanual Manipulation Policies using State Diffusion and Inverse Dynamics Models**  
-Haonan Chen, Jiaming Xu *, Lily Sheng *, Tianchen Ji, **Shuijing Liu**, Yunzhu Li, Katherine Driggs-Campbell.         
 Under review for IEEE International Conference on Robotics and Automation (ICRA), 2025.
 
 ### **Topology-Guided ORCA: Smooth Multi-Agent Motion Planning in Constrained Environments**  
@@ -32,6 +29,10 @@ In IEEE Robotics and Automation Letters (RA-L), 2024.
 [[Paper]](https://arxiv.org/abs/2307.06924) [[Website]](https://sites.google.com/view/dragon-wayfinding) [[Video]](https://youtube.com/playlist?list=PLL4IPhbfiY3YkITpyLjeroak_wBn151pn&si=JNUKi5sOc7iRxJj0) [[Code]](https://github.com/Shuijing725/Dragon_Wayfinding/)   
 
 ## Conference
+### **Learning Coordinated Bimanual Manipulation Policies using State Diffusion and Inverse Dynamics Models**  
+Haonan Chen, Jiaming Xu *, Lily Sheng *, Tianchen Ji, **Shuijing Liu**, Yunzhu Li, Katherine Driggs-Campbell.         
+In IEEE International Conference on Robotics and Automation (ICRA), 2025.   
+
 ### **A Data-Efficient Visual-Audio Representation with Intuitive Fine-tuning for Voice-Controlled Robots**  
 Peixin Chang, **Shuijing Liu**, Tianchen Ji, Neeloy Chakraborty, Kaiwen Hong, and Katherine Driggs-Champbell.   
 In Conference on Robot Learning (CoRL), 2023.   
@@ -73,7 +74,7 @@ In IEEE International Conference on Intelligent Transportation Systems (ITSC), 2
 ### **Learning to Navigate Intersections with Unsupervised Driver Trait Inference**  
 **Shuijing Liu**, Peixin Chang, Haonan Chen, Neeloy Chakraborty, and Katherine Driggs-Champbell.   
 In IEEE International Conference on Robotics and Automation (ICRA), 2022.  
-[[Paper]](https://arxiv.org/abs/2109.06783) [[Website]](https://sites.google.com/illinois.edu/vae-trait-inference/home) [[Code]](https://github.com/Shuijing725/VAE_trait_inference) [[Video]](https://www.youtube.com/watch?v=wqbgsjSvkAo&t=1s)
+[[Paper]](https://arxiv.org/abs/2109.06783) [[Website]](https://sites.google.com/view/vae-trait-inference/home) [[Code]](https://github.com/Shuijing725/VAE_trait_inference) [[Video]](https://www.youtube.com/watch?v=wqbgsjSvkAo&t=1s)
 
 ### **Off Environment Evaluation Using Convex Risk Minimization**  
 Pulkit Katdare, **Shuijing Liu**, and Katherine Driggs-Champbell.   
@@ -83,7 +84,7 @@ In IEEE International Conference on Robotics and Automation (ICRA), 2022.
 ### **Decentralized Structural-RNN for Robot Crowd Navigation with Deep Reinforcement Learning**  
 __Shuijing Liu__ *, Peixin Chang *, Weihang Liang &dagger; , Neeloy Chakraborty &dagger; , and Katherine Driggs-Champbell.   
 In IEEE International Conference on Robotics and Automation (ICRA), 2021.   
-[[Paper]](https://arxiv.org/abs/2011.04820) [[Website]](https://sites.google.com/illinois.edu/crowdnav-dsrnn/home) [[Code]](https://github.com/Shuijing725/CrowdNav_DSRNN) [[Video]](https://youtu.be/bYO-1IAjzgY)
+[[Paper]](https://arxiv.org/abs/2011.04820) [[Website]](https://sites.google.com/view/crowdnav-ds-rnn/home) [[Code]](https://github.com/Shuijing725/CrowdNav_DSRNN) [[Video]](https://youtu.be/bYO-1IAjzgY)
 
 ### **Robot Sound Interpretation: Combining Sight and Sound in Learning-Based Control**  
 Peixin Chang, **Shuijing Liu**, Haonan Chen, Katherine Driggs-Champbell.   
