@@ -8,6 +8,8 @@ redirect_from:
   - /about.html
 ---
 
+<div style="font-size:15px; color:gray;">How to pronounce my name: Shway-Jeeng Leo</div>   
+<div style="height: 20px;"></div> <!-- Adds a 15px gap -->
 Welcome to my personal website! I'm a postdoc scholar in [UT Austin Robot Perception and Learning Lab](https://rpl.cs.utexas.edu/), 
 advised by Professor [Yuke Zhu](https://yukezhu.me/).
 In 2024, I obtained my PhD from [Human-Centered Autonomy Lab](https://publish.illinois.edu/humancenteredautonomy/) in 
