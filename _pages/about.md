@@ -17,6 +17,9 @@ In 2024, I obtained my PhD from [Human-Centered Autonomy Lab](https://publish.il
 [University of Illinois at Urbana Champaign](https://illinois.edu), 
 advised by Professor [Katherine Driggs-Campbell](https://krdc.web.illinois.edu).
 
+Previously, I earned my Bachelor's Degree in Computer Engineering from University of Illinois at Urbana Champaign in May 2018. Before that, I was born and raised in [Zhengzhou](https://www.google.com/maps/place/Zhengzhou,+Henan,+China/@34.7425008,113.4983694,11z/data=!3m1!4b1!4m6!3m5!1s0x35d76594f09b6a9d:0x7932ee19f4cced2c!8m2!3d34.7472499!4d113.62493!16zL20vMDFxOXpz?entry=ttu), China.
+
+
 Research Interests
 ---
 I’m excited about enabling robots to operate in unstructured human environments, such as our homes and offices.
@@ -28,11 +31,11 @@ My research is inspired by and deployed in challenging real-world applications, 
 
 My long term goal is to enable robots to interact and collaborate with people in daily life. I advocate for robot learning from the people, with the people, and for the people.   
 
-Previously, I earned my Bachelor's Degree in Computer Engineering from University of Illinois at Urbana Champaign in May 2018. Before that, I was born and raised in [Zhengzhou](https://www.google.com/maps/place/Zhengzhou,+Henan,+China/@34.7425008,113.4983694,11z/data=!3m1!4b1!4m6!3m5!1s0x35d76594f09b6a9d:0x7932ee19f4cced2c!8m2!3d34.7472499!4d113.62493!16zL20vMDFxOXpz?entry=ttu), China.
-
 **I'm open to research discussion and collaboration, please feel free to get in touch!**  
 
-For junior PhD/Master/undergraduate students: I dedicate 30 minutes every two weeks to offer mentorship/advising/help, especially for students from underrepresented groups or whoever is in need. 
+Outreach
+---
+For junior PhD/Master/undergraduate students and potential collaborators: I dedicate 30 minutes every two weeks to offer mentorship/advising/help, especially for students from underrepresented groups or whoever is in need. 
 Topics include but are not limited to AI/robotics/HRI research, graduate school application, career development, life, etc.
 If you would like to chat with me, please fill [this form](https://docs.google.com/forms/d/e/1FAIpQLSdrKp_LFAzOSeKd_V_cAKGZmH5hpAprnxb8cPDXMhhrhiWR5w/viewform?usp=sf_link) to schedule.
 
@@ -54,3 +57,9 @@ News
 - **06/30/2020:** Our paper "Robot Sound Interpretation: Combining Sight and Sound in Learning-Based Control" is accepted in [IROS 2020](https://www.iros2020.org)!
 - **06/19/2020:** Starting my PhD journey in [HCA group](https://publish.illinois.edu/humancenteredautonomy/)!
 - **09/28/2019:** My personal website is live!
+
+Miscellaneous
+---
+Navigating through an academic career is hard, especially after PhD graduation (i.e. you're on your own). Here're the quotes from senior colleagues that empowers me from time to time:
+- "As you rise, many people will disapprove. Rise anyway." -- Prof. Heng Ji
+- "People are asking, and I’m asking, what is my legacy? And I tell you, my legacy is my students. They worked hard, but they felt they were appreciated, and there was a sense of camaraderie and support for each other. I didn’t do it consciously, but I guess it came from my motherly instincts. And I’m still in contact with many of them—I worry about their children, the usual grandma!" -- Prof. Ruzena Bajcsy (who's also my academic grandma!)
