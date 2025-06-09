@@ -27,7 +27,7 @@ I consider human modeling, interaction reasoning, and decision making as essenti
 Thus, my research is at the intersection of **robot learning** and **human-robot interaction**. 
 I use AI tools to develop fundamental learning paradigms for human-centered robotics problems. 
 My research is inspired by and deployed in challenging real-world applications, including navigation in human crowds, autonomous driving, instruction following, and assistive robots for people with disabilities.   
-[**[CV]**](/files/Shuijing_Liu_cv 02_2025.pdf)  [**[Research statement]**](/files/Research_statement_RSS_Pioneers_2025_not_anonymous.pdf)   
+[**[CV]**](/files/Shuijing_Liu_cv_05_2025.pdf)  [**[Research statement]**](/files/Research_statement_RSS_Pioneers_2025_not_anonymous.pdf)   
 
 My long term goal is to enable robots to interact and collaborate with people in daily life. I advocate for robot learning from the people, with the people, and for the people.   
 
@@ -41,6 +41,7 @@ If you would like to chat with me, please fill [this form](https://docs.google.c
 
 News
 ---
+- **04/11/2025:** I'm honored to be part of [RSS Pioneers cohort](https://sites.google.com/view/rsspioneers2025/participants) this year!
 - **08/16/2024:** I started my postdoc at UT Austin RPL Lab! Also, I'm selected as an [MIT EECS Rising Star in 2024](https://risingstars-eecs.mit.edu/participants/?y=2024&area=robotics)!
 - **05/23/2024:** I passed my thesis defense! Big thanks to my advisor, my committee, and my colleagues in HCA lab!
 - **01/21/2024:** Our paper ["DRAGON: A Dialogue-Based Robot for Assistive Navigation with Visual Language Grounding"](https://sites.google.com/view/dragon-wayfinding) is accepted to RA-L!
