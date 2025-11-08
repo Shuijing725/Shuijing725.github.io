@@ -10,26 +10,28 @@ redirect_from:
 
 <div style="font-size:15px; color:gray;">How to pronounce my name: Shway-Jeeng Leo</div>   
 <div style="height: 20px;"></div> <!-- Adds a 15px gap -->
-Welcome to my personal website! I'm a postdoc scholar in [UT Austin Robot Perception and Learning Lab](https://rpl.cs.utexas.edu/), 
-advised by Professor [Yuke Zhu](https://yukezhu.me/).
-In 2024, I obtained my PhD from [Human-Centered Autonomy Lab](https://publish.illinois.edu/humancenteredautonomy/) in 
-[Electrical and Computer Engineering](https://ece.illinois.edu), 
-[University of Illinois at Urbana Champaign](https://illinois.edu), 
-advised by Professor [Katherine Driggs-Campbell](https://krdc.web.illinois.edu).
+Welcome to my personal website! I'm a postdoc at UT Austin, 
+advised by Prof. [Yuke Zhu](https://yukezhu.me/), Prof. [Peter Stone](https://www.cs.utexas.edu/~pstone/), and Prof. [Joydeep Biswas](https://www.joydeepb.com/).
+In 2024, I obtained my PhD from [University of Illinois at Urbana Champaign](https://illinois.edu), 
+advised by Prof. [Katherine Driggs-Campbell](https://krdc.web.illinois.edu).
 
 Previously, I earned my Bachelor's Degree in Computer Engineering from University of Illinois at Urbana Champaign in May 2018. Before that, I was born and raised in [Zhengzhou](https://www.google.com/maps/place/Zhengzhou,+Henan,+China/@34.7425008,113.4983694,11z/data=!3m1!4b1!4m6!3m5!1s0x35d76594f09b6a9d:0x7932ee19f4cced2c!8m2!3d34.7472499!4d113.62493!16zL20vMDFxOXpz?entry=ttu), China.
 
 
-Research Interests
+Research Interests:
 ---
-I’m excited about enabling robots to operate in unstructured human environments, such as our homes and offices.
-I consider human modeling, interaction reasoning, and decision making as essential capabilities of such robots.
-Thus, my research is at the intersection of **robot learning** and **human-robot interaction**. 
-I use AI tools to develop fundamental learning paradigms for human-centered robotics problems. 
-My research is inspired by and deployed in challenging real-world applications, including navigation in human crowds, autonomous driving, instruction following, and assistive robots for people with disabilities.   
-[**[CV]**](/files/Shuijing_Liu_cv_05_2025.pdf)  [**[Research statement]**](/files/Research_statement_RSS_Pioneers_2025_not_anonymous.pdf)   
+My goal is to enable robots to move beyond tool -like roles and instead collaborate with us as partners.
+Toward this vision, my research treats humans, the end-users and beneficiaries of robots, as essential stakeholders in robot learning. 
+My work is centered around **in-the-wild learning and deployment of human-centered robotics** that infer and support human needs in the open world, operate robustly alongside human crowds,
+and adapt efficiently through natural interactions with humans.
 
-My long term goal is to enable robots to interact and collaborate with people in daily life. I advocate for robot learning from the people, with the people, and for the people.   
+[**[CV]**](/files/Shuijing_Liu_cv_faculty.pdf)  [**[Research statement]**](/files/Research_statement_faculty_Shuijing_Liu.pdf)  [**[Teaching statement]**](/files/Teaching_statement_faculty_Shuijing_Liu.pdf)  [**[Service/DEI statement]**](/files/Service_DEI_statement_faculty_Shuijing_Liu.pdf)     
+
+My long term vision is to establish **a foundamental human-centered robot learning paradigm** that empowers capable and socially aware robot partners in everyday life. 
+Advancing human-centered robot learning requires expanding robot capabilities in human-centric tasks, training robots with data that reflect human values, and fostering trustworthy human–robot communication.
+I advocate for robot learning from the people, with the people, and for the people.   
+
+**<span style="color:red;">I'm on academic job market for 2025-26 cycle. If you are aware of any opportunities, please contact me at <a href="mailto:shuijing.liu@utexas.edu">shuijing.liu@utexas.edu</a>!</span>**  
 
 **I'm open to research discussion and collaboration, please feel free to get in touch!**  
 
@@ -61,6 +63,7 @@ News
 
 Miscellaneous
 ---
-Navigating through an academic career is hard, especially after PhD graduation (i.e. you're on your own). Here're the quotes from senior colleagues that empowers me from time to time:
+Navigating through an academic career is hard. Here're the quotes that empowers me from time to time:
+- "The scary news is, you're on your own now. But the cool news is, you're on your own now." -- Taylor Swift
 - "As you rise, many people will disapprove. Rise anyway." -- Prof. Heng Ji
 - "People are asking, and I’m asking, what is my legacy? And I tell you, my legacy is my students. They worked hard, but they felt they were appreciated, and there was a sense of camaraderie and support for each other. I didn’t do it consciously, but I guess it came from my motherly instincts. And I’m still in contact with many of them—I worry about their children, the usual grandma!" -- Prof. Ruzena Bajcsy (who's also my academic grandma!)
