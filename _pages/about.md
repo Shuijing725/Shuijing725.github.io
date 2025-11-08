@@ -25,7 +25,7 @@ Toward this vision, my research treats humans, the end-users and beneficiaries o
 My work is centered around **in-the-wild learning and deployment of human-centered robotics** that infer and support human needs in the open world, operate robustly alongside human crowds,
 and adapt efficiently through natural interactions with humans.
 
-[**[CV]**](/files/Shuijing_Liu_cv_faculty.pdf)  [**[Research statement]**](/files/Research_statement_faculty_Shuijing_Liu.pdf)  [**[Teaching statement]**](/files/Teaching_statement_faculty_Shuijing_Liu.pdf)  [**[Service/DEI statement]**](/files/Service_DEI_statement_faculty_Shuijing_Liu.pdf)     
+[**[CV]**](/files/Shuijing_Liu_cv_public.pdf)  [**[Research statement]**](/files/Research_statement_faculty_Shuijing_Liu.pdf)  [**[Teaching statement]**](/files/Teaching_statement_faculty_Shuijing_Liu.pdf)  [**[Service/DEI statement]**](/files/Service_DEI_statement_faculty_Shuijing_Liu.pdf)     
 
 My long term vision is to establish **a foundamental human-centered robot learning paradigm** that empowers capable and socially aware robot partners in everyday life. 
 Advancing human-centered robot learning requires expanding robot capabilities in human-centric tasks, training robots with data that reflect human values, and fostering trustworthy human–robot communication.
