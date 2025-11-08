@@ -20,16 +20,15 @@ Previously, I earned my Bachelor's Degree in Computer Engineering from Universit
 
 Research Interests:
 ---
-My goal is to enable robots to move beyond tool -like roles and instead collaborate with us as partners.
-Toward this vision, my research treats humans, the end-users and beneficiaries of robots, as essential stakeholders in robot learning. 
+My goal is to enable robots to move beyond tool-like roles and instead collaborate with us as partners.
+Toward this goal, my research treats humans, the end-users and beneficiaries of robots, as essential stakeholders in robot learning. 
 My work is centered around **in-the-wild learning and deployment of human-centered robotics** that infer and support human needs in the open world, operate robustly alongside human crowds,
-and adapt efficiently through natural interactions with humans.
-
-[**[CV]**](/files/Shuijing_Liu_cv_public.pdf)  [**[Research statement]**](/files/Research_statement_faculty_Shuijing_Liu.pdf)  [**[Teaching statement]**](/files/Teaching_statement_faculty_Shuijing_Liu.pdf)  [**[Service/DEI statement]**](/files/Service_DEI_statement_faculty_Shuijing_Liu.pdf)     
+and adapt efficiently through natural interactions with humans.   
 
 My long term vision is to establish **a foundamental human-centered robot learning paradigm** that empowers capable and socially aware robot partners in everyday life. 
 Advancing human-centered robot learning requires expanding robot capabilities in human-centric tasks, training robots with data that reflect human values, and fostering trustworthy human–robot communication.
 I advocate for robot learning from the people, with the people, and for the people.   
+[**[CV]**](/files/Shuijing_Liu_cv_public.pdf)  [**[Research statement]**](/files/Research_statement_faculty_Shuijing_Liu.pdf)  [**[Teaching statement]**](/files/Teaching_statement_faculty_Shuijing_Liu.pdf)  [**[Service/DEI statement]**](/files/Service_DEI_statement_faculty_Shuijing_Liu.pdf)   
 
 **<span style="color:red;">I'm on academic job market for 2025-26 cycle. If you are aware of any opportunities, please contact me at <a href="mailto:shuijing.liu@utexas.edu">shuijing.liu@utexas.edu</a>!</span>**  
 
