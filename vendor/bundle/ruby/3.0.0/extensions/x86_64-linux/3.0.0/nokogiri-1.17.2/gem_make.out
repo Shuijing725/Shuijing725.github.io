@@ -1,0 +1,121 @@
+current directory: /home/r15/Desktop/personal website/Shuijing725.github.io/vendor/bundle/ruby/3.0.0/gems/nokogiri-1.17.2/ext/nokogiri
+/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20251111-678361-3jd8rz.rb extconf.rb --use-system-libraries
+checking for whether -std=c99 is accepted as CFLAGS... yes
+checking for whether -Wno-declaration-after-statement is accepted as CFLAGS... yes
+checking for whether -O2 is accepted as CFLAGS... yes
+checking for whether -g is accepted as CFLAGS... yes
+checking for whether -Winline is accepted as CFLAGS... yes
+checking for whether -Wmissing-noreturn is accepted as CFLAGS... yes
+checking for whether -Wconversion is accepted as CFLAGS... no
+Building nokogiri using system libraries.
+checking for gzdopen() in -lz... yes
+checking for xmlParseDoc() in -lxml2... no
+checking for xmlParseDoc() in -llibxml2... no
+checking for libxml-2.0 using `pkg_config`... yes: ["-I/usr/include/libxml2 ", "", "-lxml2"]
+checking for xmlParseDoc() in -lxml2... yes
+checking for xsltParseStylesheetDoc() in -lxslt... yes
+checking for exsltFuncRegister() in -lexslt... yes
+WARNING: libxml2 version 2.12.0 or later is highly recommended, but proceeding anyway.
+Using mini_portile version 2.8.9
+---------- IMPORTANT NOTICE ----------
+Building Nokogiri with a packaged version of libgumbo-1.0.0-nokogiri.
+Configuration options: --enable-shared --disable-static
+Copying gumbo-parser files into tmp/x86_64-linux-gnu/ports/libgumbo/1.0.0-nokogiri/gumbo-parser...
+Running 'compile' for libgumbo 1.0.0-nokogiri... OK
+Activating libgumbo 1.0.0-nokogiri (from ports/x86_64-linux-gnu/libgumbo/1.0.0-nokogiri)...
+checking for whether -I/home/r15/Desktop/personal website/Shuijing725.github.io/vendor/bundle/ruby/3.0.0/gems/nokogiri-1.17.2/ext/nokogiri/ports/x86_64-linux-gnu/libgumbo/1.0.0-nokogiri/include is accepted as CPPFLAGS... no
+checking for gumbo_parse_with_options() in nokogiri_gumbo.h... no
+-----
+extconf.rb:317:in `ensure_func'
+extconf.rb:1138:in `<main>'
+gumbo_parse_with_options is missing. Please locate mkmf.log to investigate how it is failing.
+-----
+*** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of necessary
+libraries and/or headers.  Check the mkmf.log file for more details.  You may
+need configuration options.
+
+Provided configuration options:
+	--with-opt-dir
+	--without-opt-dir
+	--with-opt-include
+	--without-opt-include=${opt-dir}/include
+	--with-opt-lib
+	--without-opt-lib=${opt-dir}/lib
+	--with-make-prog
+	--without-make-prog
+	--srcdir=.
+	--curdir
+	--ruby=/usr/bin/$(RUBY_BASE_NAME)3.0
+	--help
+	--clean
+	--prevent-strip
+	--enable-system-libraries
+	--disable-system-libraries
+	--use-system-libraries
+	--enable-system-libraries
+	--disable-system-libraries
+	--use-system-libraries
+	--enable-xml2-legacy
+	--disable-xml2-legacy
+	--with-zlib-dir
+	--without-zlib-dir
+	--with-zlib-include
+	--without-zlib-include=${zlib-dir}/include
+	--with-zlib-lib
+	--without-zlib-lib=${zlib-dir}/lib
+	--with-z-dir
+	--without-z-dir
+	--with-z-include
+	--without-z-include=${z-dir}/include
+	--with-z-lib
+	--without-z-lib=${z-dir}/lib
+	--with-zlib
+	--without-zlib
+	--with-xml2-dir
+	--without-xml2-dir
+	--with-xml2-include
+	--without-xml2-include=${xml2-dir}/include
+	--with-xml2-lib
+	--without-xml2-lib=${xml2-dir}/lib
+	--with-xml2lib
+	--without-xml2lib
+	--with-libxml2-dir
+	--without-libxml2-dir
+	--with-libxml2-include
+	--without-libxml2-include=${libxml2-dir}/include
+	--with-libxml2-lib
+	--without-libxml2-lib=${libxml2-dir}/lib
+	--with-libxml2lib
+	--without-libxml2lib
+	--with-libxml-2.0-config
+	--without-libxml-2.0-config
+	--with-pkg-config
+	--without-pkg-config
+	--with-xml2lib
+	--without-xml2lib
+	--with-xslt-dir
+	--without-xslt-dir
+	--with-xslt-include
+	--without-xslt-include=${xslt-dir}/include
+	--with-xslt-lib
+	--without-xslt-lib=${xslt-dir}/lib
+	--with-xsltlib
+	--without-xsltlib
+	--with-exslt-dir
+	--without-exslt-dir
+	--with-exslt-include
+	--without-exslt-include=${exslt-dir}/include
+	--with-exslt-lib
+	--without-exslt-lib=${exslt-dir}/lib
+	--with-exsltlib
+	--without-exsltlib
+	--gumbo-dev
+	--enable-cross-build
+	--disable-cross-build
+
+To see why this extension failed to compile, please check the mkmf.log which can be found here:
+
+  /home/r15/Desktop/personal website/Shuijing725.github.io/vendor/bundle/ruby/3.0.0/extensions/x86_64-linux/3.0.0/nokogiri-1.17.2/mkmf.log
+
+extconf failed, exit code 1
