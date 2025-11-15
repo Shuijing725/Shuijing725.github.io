@@ -674,7 +674,7 @@ Rogers. </span>
 
 
 <script>
-(function(){
+document.addEventListener('DOMContentLoaded', function () {
   const qs  = sel => document.querySelector(sel);
   const qsa = sel => Array.from(document.querySelectorAll(sel));
 
@@ -688,7 +688,7 @@ Rogers. </span>
   function readProjects(){
     return qsa('#by-topic .proj').map(node => ({
       node,
-      // default to "Others" if nothing set
+      // default topic label if missing
       topic: node.dataset.topic || 'Others',
       date:  node.dataset.date  || '1970-01-01',
       selected: (node.dataset.selected || 'false') === 'true'
@@ -713,6 +713,7 @@ Rogers. </span>
       ...topicsSet.filter(t => !desiredOrder.includes(t)).sort()
     ];
 
+    if (!topicBar) return;
     topicBar.innerHTML = '';
 
     topics.forEach(topic => {
@@ -722,12 +723,12 @@ Rogers. </span>
       btn.dataset.topic = topic;
 
       btn.addEventListener('click', () => {
-        // highlight active
+        // highlight active topic button
         qsa('#topic-filters button').forEach(b =>
           b.classList.toggle('is-active', b === btn)
         );
 
-        // show only this topic
+        // show only this topic (sorted order already enforced)
         items.forEach(i => {
           i.node.style.display = (i.topic === topic) ? '' : 'none';
         });
@@ -739,7 +740,7 @@ Rogers. </span>
       topicBar.appendChild(btn);
     });
 
-    // auto-select first topic (Human modeling, if present)
+    // auto-select first topic (e.g., Human modeling, if present)
     const firstBtn = topicBar.querySelector('button');
     if (firstBtn) firstBtn.click();
   }
@@ -747,51 +748,59 @@ Rogers. </span>
   function setMode(mode){
     const items = readProjects();
 
+    // Global newest → oldest sort by date for ALL modes
+    const sortedItems = items.slice().sort((a, b) => b.date.localeCompare(a.date));
+
+    // Update button pressed state
     buttons.forEach(b =>
       b.setAttribute('aria-pressed', String(b.dataset.mode === mode))
     );
 
     const counts = {
-      all: items.length,
-      selected: items.filter(i => i.selected).length,
-      topics: new Set(items.map(i => i.topic)).size
+      all: sortedItems.length,
+      selected: sortedItems.filter(i => i.selected).length,
+      topics: new Set(sortedItems.map(i => i.topic)).size
     };
 
     if (mode === 'selected') {
-      byDate.style.display  = 'none';
-      byTopic.style.display = '';
-      topicBar.style.display = 'none';
+      if (byDate) byDate.style.display  = 'none';
+      if (byTopic) byTopic.style.display = '';
+      if (topicBar) topicBar.style.display = 'none';
 
-      items.forEach(i => {
+      // Enforce newest → oldest order in the DOM and filter by selected
+      sortedItems.forEach(i => {
+        byTopic.appendChild(i.node);  // re-append in sorted order
         i.node.style.display = i.selected ? '' : 'none';
       });
 
       summary.textContent = `Showing ${counts.selected} selected item(s) of ${counts.all}.`;
 
     } else if (mode === 'topic') {
-      byDate.style.display  = 'none';
-      byTopic.style.display = '';
-      topicBar.style.display = 'flex';
+      if (byDate) byDate.style.display  = 'none';
+      if (byTopic) byTopic.style.display = '';
+      if (topicBar) topicBar.style.display = 'flex';
 
-      // show everything first; filtering happens via buttons
-      items.forEach(i => { i.node.style.display = ''; });
-      buildTopicButtons(items);
+      // Enforce newest → oldest order in the DOM before topic filtering
+      sortedItems.forEach(i => {
+        byTopic.appendChild(i.node);
+        i.node.style.display = '';  // visible; topic buttons will filter
+      });
 
+      buildTopicButtons(sortedItems);
       // summary is updated when a topic button is clicked
 
     } else { // mode === 'date'
-      byTopic.style.display = 'none';
-      byDate.style.display  = '';
-      topicBar.style.display = 'none';
-      byDate.innerHTML = '';
+      if (byTopic) byTopic.style.display = 'none';
+      if (byDate)  byDate.style.display  = '';
+      if (topicBar) topicBar.style.display = 'none';
+      if (byDate) byDate.innerHTML = '';
 
-      // Sort by full date (newest first)
-      const sorted = items.slice().sort((a,b) => b.date.localeCompare(a.date));
+      const sorted = sortedItems; // already newest → oldest
 
-      // ---- GROUP BY YEAR instead of full date ----
+      // Group by YEAR only
       const yearMap = new Map();
       sorted.forEach(i => {
-        const year = (i.date || '1970-01-01').slice(0,4);
+        const year = (i.date || '1970-01-01').slice(0, 4);
         if (!yearMap.has(year)) yearMap.set(year, []);
         yearMap.get(year).push(i);
       });
@@ -812,13 +821,13 @@ Rogers. </span>
         byDate.appendChild(g);
       });
 
-      summary.textContent = `Showing all ${counts.all} item(s) grouped by year.`;
+      summary.textContent = `Showing all ${counts.all} item(s) grouped by year (newest first).`;
     }
 
     // reflect in URL
-    const url = new URL(location);
+    const url = new URL(window.location.href);
     url.searchParams.set('mode', mode);
-    history.replaceState({}, '', url);
+    window.history.replaceState({}, '', url);
   }
 
   // Wire top buttons
@@ -826,10 +835,15 @@ Rogers. </span>
     b.addEventListener('click', () => setMode(b.dataset.mode))
   );
 
-  // Initial mode from URL or default to "selected"
-  setMode(new URL(location).searchParams.get('mode') ?? 'selected');
-})();
+  // Initial mode from URL or default to **"date"**
+  const initialMode =
+    new URL(window.location.href).searchParams.get('mode') ?? 'date';
+  setMode(initialMode);
+});
 </script>
+
+
+
 
 
 
