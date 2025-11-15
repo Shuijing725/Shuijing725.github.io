@@ -1,186 +1,153 @@
-document.addEventListener('DOMContentLoaded', function () {
-  function qs(sel)  { return document.querySelector(sel); }
-  function qsa(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+// assets/js/projects.js
+document.addEventListener('DOMContentLoaded', () => {
+  const qs  = sel => document.querySelector(sel);
+  const qsa = sel => Array.from(document.querySelectorAll(sel));
 
-  var byTopic  = qs('#by-topic');
-  var byDate   = qs('#by-date');
-  var summary  = qs('#content-summary');
-  var buttons  = qsa('.content-switcher [data-mode]');
-  var topicBar = qs('#topic-filters');
+  const byTopic  = qs('#by-topic');
+  const byDate   = qs('#by-date');
+  // const summary  = qs('#content-summary');
+  const buttons  = qsa('.content-switcher [data-mode]');
+  const topicBar = qs('#topic-filters');
 
-  // ---------- "More authors" one-way reveal ----------
-  document.addEventListener('click', function (e) {
-    var t = e.target || e.srcElement;
+  // ---- 1. TAKE AN IMMUTABLE SNAPSHOT OF ALL PROJECTS ----
+  const RAW_PROJECTS = qsa('#by-topic .proj').map(node => ({
+    topic: node.dataset.topic || 'Other',
+    date:  node.dataset.date  || '1970-01-01',
+    selected: (node.dataset.selected || 'false') === 'true',
+    html: node.outerHTML,
+  }));
 
-    // climb up to find <a class="more-authors">
-    while (t && t !== document &&
-           !(t.tagName === 'A' && t.classList.contains('more-authors'))) {
-      t = t.parentNode;
-    }
-    if (!t || t === document) return;
+  // Ensure they are globally sorted newest → oldest
+  RAW_PROJECTS.sort((a, b) => b.date.localeCompare(a.date));
 
-    e.preventDefault();
-    var id   = t.getAttribute('data-target');
-    var rest = id && document.getElementById(id);
-    if (!rest) return;
+  // ---- 2. TOPIC BUTTONS ----
+  function buildTopicButtons() {
+    const desiredOrder = [
+      'Human modeling',
+      'Robust planning',
+      'Continual adaptation',
+      'Others'
+    ];
 
-    rest.classList.remove('is-hidden');
-    t.setAttribute('aria-expanded', 'true');
-    if (t.parentNode) t.parentNode.removeChild(t);
-  });
+    const topicsSet = new Set(RAW_PROJECTS.map(p => p.topic));
+    const topics = desiredOrder.filter(t => topicsSet.has(t))
+      .concat([...topicsSet].filter(t => !desiredOrder.includes(t)));
 
-  // ---------- Helpers ----------
-  function readProjects() {
-    var items = [];
-    qsa('#by-topic .proj').forEach(function (node) {
-      items.push({
-        node: node,
-        topic: node.getAttribute('data-topic') || 'Others',
-        date:  node.getAttribute('data-date')  || '1970-01-01',
-        selected: (node.getAttribute('data-selected') || 'false') === 'true'
-      });
-    });
-    return items;
-  }
-
-  function buildTopicButtons(items) {
     topicBar.innerHTML = '';
 
-    var desiredOrder = ['Human modeling', 'Robust planning',
-                        'Continual adaptation', 'Others'];
-
-    var topicsSet = {};
-    items.forEach(function (i) { topicsSet[i.topic] = true; });
-
-    var topics = [];
-    desiredOrder.forEach(function (t) {
-      if (topicsSet[t]) topics.push(t);
-    });
-    for (var t in topicsSet) {
-      if (topicsSet.hasOwnProperty(t) && desiredOrder.indexOf(t) === -1) {
-        topics.push(t);
-      }
-    }
-
-    topics.forEach(function (topic) {
-      var btn = document.createElement('button');
+    topics.forEach(topic => {
+      const btn = document.createElement('button');
       btn.type = 'button';
       btn.textContent = topic;
-      btn.setAttribute('data-topic', topic);
+      btn.dataset.topic = topic;
 
-      btn.addEventListener('click', function () {
-        qsa('#topic-filters button').forEach(function (b) {
-          b.classList.toggle('is-active', b === btn);
+      btn.addEventListener('click', () => {
+        qsa('#topic-filters button').forEach(b =>
+          b.classList.toggle('is-active', b === btn)
+        );
+
+        // Show only the chosen topic
+        qsa('#by-topic .proj').forEach(pNode => {
+          const t = pNode.dataset.topic || 'Other';
+          pNode.style.display = (t === topic) ? '' : 'none';
         });
 
-        var count = 0;
-        items.forEach(function (i) {
-          if (i.topic === topic) {
-            i.node.style.display = '';
-            count += 1;
-          } else {
-            i.node.style.display = 'none';
-          }
-        });
-
-        summary.textContent =
-          'Showing ' + count + ' item(s) in topic "' + topic + '".';
+        const count = RAW_PROJECTS.filter(p => p.topic === topic).length;
+        // summary.textContent = `Showing ${count} item(s) in topic “${topic}”.`;
       });
 
       topicBar.appendChild(btn);
     });
 
-    var firstBtn = topicBar.querySelector('button');
+    const firstBtn = topicBar.querySelector('button');
     if (firstBtn) firstBtn.click();
   }
 
+  // ---- 3. RENDER MODES ----
   function setMode(mode) {
-    var items = readProjects();
+    // Button aria state
+    buttons.forEach(b =>
+      b.setAttribute('aria-pressed', String(b.dataset.mode === mode))
+    );
 
-    buttons.forEach(function (b) {
-      var pressed = (b.getAttribute('data-mode') === mode) ? 'true' : 'false';
-      b.setAttribute('aria-pressed', pressed);
-    });
-
-    var total         = items.length;
-    var selectedCount = items.filter(function (i) { return i.selected; }).length;
-    var topicsSet     = {};
-    items.forEach(function (i) { topicsSet[i.topic] = true; });
+    const counts = {
+      all: RAW_PROJECTS.length,
+      selected: RAW_PROJECTS.filter(p => p.selected).length,
+      topics: new Set(RAW_PROJECTS.map(p => p.topic)).size,
+    };
 
     if (mode === 'selected') {
-      byDate.style.display  = 'none';
-      byTopic.style.display = '';
+      byDate.style.display   = 'none';
       topicBar.style.display = 'none';
+      byTopic.style.display  = '';
 
-      items.forEach(function (i) {
-        i.node.style.display = i.selected ? '' : 'none';
-      });
+      // Rebuild #by-topic with only selected projects
+      const selected = RAW_PROJECTS.filter(p => p.selected);
+      byTopic.innerHTML = selected.map(p => p.html).join('');
 
-      summary.textContent =
-        'Showing ' + selectedCount + ' selected item(s) of ' + total + '.';
+//      summary.textContent =
+//        `Showing ${selected.length} selected item(s) of ${counts.all}.`;
 
     } else if (mode === 'topic') {
-      byDate.style.display  = 'none';
-      byTopic.style.display = '';
+      byDate.style.display   = 'none';
+      byTopic.style.display  = '';
       topicBar.style.display = 'flex';
 
-      items.forEach(function (i) { i.node.style.display = ''; });
-      buildTopicButtons(items);
+      // Rebuild #by-topic with *all* projects, then topic buttons filter
+      byTopic.innerHTML = RAW_PROJECTS.map(p => p.html).join('');
+      buildTopicButtons();
+
+      // summary gets updated by topic button click
 
     } else { // mode === 'date'
-      byTopic.style.display = 'none';
-      byDate.style.display  = '';
+      byTopic.style.display  = 'none';
       topicBar.style.display = 'none';
-      byDate.innerHTML = '';
+      byDate.style.display   = '';
+      byDate.innerHTML       = '';
 
-      var sorted = items.slice().sort(function (a, b) {
-        return b.date.localeCompare(a.date) * -1; // newest first
+      // Group a fresh copy by year
+      const yearMap = new Map();
+      RAW_PROJECTS.forEach(p => {
+        const year = (p.date || '1970-01-01').slice(0, 4);
+        if (!yearMap.has(year)) yearMap.set(year, []);
+        yearMap.get(year).push(p);
       });
 
-      var yearMap = {};
-      sorted.forEach(function (i) {
-        var year = (i.date || '1970-01-01').slice(0, 4);
-        if (!yearMap[year]) yearMap[year] = [];
-        yearMap[year].push(i);
-      });
+      // Render groups, newest year first
+      [...yearMap.keys()].sort((a, b) => b.localeCompare(a)).forEach(year => {
+        const group = document.createElement('div');
+        group.className = 'group';
 
-      Object.keys(yearMap).sort(function (a, b) {
-        return b.localeCompare(a);
-      }).forEach(function (year) {
-        var g = document.createElement('div');
-        g.className = 'group';
-
-        var h = document.createElement('h3');
+        const h = document.createElement('h3');
         h.textContent = year;
-        g.appendChild(h);
+        group.appendChild(h);
 
-        yearMap[year].forEach(function (i) {
-          g.appendChild(i.node.cloneNode(true));
+        yearMap.get(year).forEach(p => {
+          const wrapper = document.createElement('div');
+          wrapper.innerHTML = p.html;
+          group.appendChild(wrapper.firstElementChild);
         });
 
-        byDate.appendChild(g);
+        byDate.appendChild(group);
       });
 
-      summary.textContent =
-        'Showing all ' + total + ' item(s) grouped by year.';
+//      summary.textContent =
+//        `Showing all ${counts.all} item(s) grouped by year.`;
     }
 
-    // optional URL sync (ignore if URL unsupported)
-    if (typeof URL === 'function') {
-      var url = new URL(window.location.href);
-      url.searchParams.set('mode', mode);
-      window.history.replaceState({}, '', url);
-    }
+    // Reflect mode in URL
+    const url = new URL(location);
+    url.searchParams.set('mode', mode);
+    history.replaceState({}, '', url);
   }
 
-  // Wire up buttons and default mode
-  buttons.forEach(function (b) {
-    b.addEventListener('click', function () {
-      setMode(b.getAttribute('data-mode'));
-    });
-  });
+  // ---- 4. WIRE MODE BUTTONS & INITIAL MODE ----
+  buttons.forEach(b =>
+    b.addEventListener('click', () => setMode(b.dataset.mode))
+  );
 
-  // Default: show all by date
-  setMode('date');
+  // Default: show all by date first time user lands on the page
+  const initialMode =
+    new URL(location).searchParams.get('mode') ?? 'date';
+  setMode(initialMode);
 });
-
