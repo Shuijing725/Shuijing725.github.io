@@ -14,13 +14,48 @@ author_profile: true
     line-height: 1.35;    /* keep good readability */
   }
 
-  .pub .info a {
-    font-size: 0.9rem;    /* make links match */
+  /* Base: remove card-like box, use simple spacing */
+  .proj{
+    padding:0;
+    margin:1.1rem 0;
   }
 
-  .pub .info strong {
-    font-size: 1rem;      /* keep titles just a bit larger */
+  .proj h2{
+    font-size:1.2rem;
+    margin-bottom:.2rem;
   }
+
+  .proj p{
+    margin:.1rem 0;
+  }
+
+  .content-switcher{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.5rem;
+    margin-bottom:.75rem;
+  }
+  .content-switcher button{
+    border:1px solid #d1d5db;
+    background:#f9fafb;
+    padding:.35rem .7rem;
+    border-radius:.6rem;
+    cursor:pointer;
+    font-size:0.9rem;
+  }
+  .content-switcher button[aria-pressed="true"]{
+    background:#2563eb;
+    border-color:#2563eb;
+    color:white;
+  }
+
+  .summary-line{
+    font-size:0.9rem;
+    color:#4b5563;
+    margin-bottom:.5rem;
+  }
+
+  /* Publication row: image left, text right, no surrounding box */
   .pub{
     display:flex;
     gap:16px;
@@ -31,9 +66,9 @@ author_profile: true
     margin:18px 0;
   }
 
-  /* Increase thumbnail size */
+  /* Larger thumbnail (1.5× original-ish) */
   .pub .thumb{
-    flex:0 0 320px;   /* was 180px → 180 × 1.5 = 270 */
+    flex:0 0 320px;
     max-width:320px;
   }
   .pub .thumb img{
@@ -50,224 +85,314 @@ author_profile: true
   .group{ margin:1rem 0; }
   .group > h3{
     margin:.25rem 0 .5rem;
-    border-bottom:1px solid #eee;
-    padding-bottom:.25rem;
-    font-size:1rem;
+    font-size:1.05rem;
+    font-weight:600;
+    color:#111827;
   }
 
+  #topic-filters{
+    display:flex;
+    gap:.5rem;
+    flex-wrap:wrap;
+    margin:.35rem 0 .75rem;
+  }
+  #topic-filters button{
+    border:1px solid #d1d5db;
+    background:#fff;
+    padding:.25rem .6rem;
+    border-radius:.6rem;
+    cursor:pointer;
+    font-size:0.85rem;
+  }
+  #topic-filters button.is-active{
+    background:#2563eb;
+    border-color:#2563eb;
+    color:#fff;
+  }
+
+  /* On narrow screens stack image + text */
   @media (max-width:640px){
     .pub{ flex-direction:column; }
     .pub .thumb{ max-width:100%; }
   }
+
+  .pub .info strong {
+    font-size: 1rem;      /* keep titles reasonable */
+    font-weight: 600;
+  }
 </style>
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  const qs  = sel => document.querySelector(sel);
-  const qsa = sel => Array.from(document.querySelectorAll(sel));
+  function qs(sel)  { return document.querySelector(sel); }
+  function qsa(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
 
-  const byTopic  = qs('#by-topic');
-  const byDate   = qs('#by-date');
-  const summary  = qs('#content-summary');
-  const buttons  = qsa('.content-switcher [data-mode]');
-  const topicBar = qs('#topic-filters');
+  var byTopic  = qs('#by-topic');
+  var byDate   = qs('#by-date');
+  var summary  = qs('#content-summary');
+  var buttons  = qsa('.content-switcher [data-mode]');
+  var topicBar = qs('#topic-filters');
 
-  // ---------- "More authors" one-click reveal ----------
+  // ---------- "More authors" toggle ----------
   document.addEventListener('click', function (e) {
-    const link = e.target.closest('a.more-authors');
-    if (!link) return;
-    e.preventDefault();
+    var target = e.target || e.srcElement;
 
-    const id = link.getAttribute('data-target');
-    const rest = id && document.getElementById(id);
+    // walk up until we find an <a class="more-authors"> or hit document
+    while (target && target !== document &&
+           !(target.tagName === 'A' && target.classList.contains('more-authors'))) {
+      target = target.parentNode;
+    }
+    if (!target || target === document) return;
+
+    e.preventDefault();
+    var id   = target.getAttribute('data-target');
+    var rest = id && document.getElementById(id);
     if (!rest) return;
 
-    // reveal remaining authors, then remove the link
     rest.classList.remove('is-hidden');
-    link.setAttribute('aria-expanded', 'true');
-    link.remove();
+    target.setAttribute('aria-expanded', 'true');
+    if (target.parentNode) {
+      target.parentNode.removeChild(target);
+    }
   });
 
-  // ---------- Helpers for projects ----------
-  function readProjects(){
-    return qsa('#by-topic .proj').map(node => ({
-      node,
-      topic: node.dataset.topic || 'Others',
-      date:  node.dataset.date  || '1970-01-01',
-      selected: (node.dataset.selected || 'false') === 'true'
-    }));
+  function readProjects() {
+    var items = [];
+    qsa('#by-topic .proj').forEach(function (node) {
+      items.push({
+        node: node,
+        topic: node.getAttribute('data-topic') || 'Other',
+        date:  node.getAttribute('data-date')  || '1970-01-01',
+        selected: (node.getAttribute('data-selected') || 'false') === 'true'
+      });
+    });
+    return items;
   }
 
-  // Build topic buttons in desired custom order
-  function buildTopicButtons(items){
-    if (!topicBar) return;
-
-    const desiredOrder = [
-      'Human modeling',
-      'Robust planning',
-      'Continual adaptation',
-      'Others'
-    ];
-
-    const topicsSet = [...new Set(items.map(i => i.topic))];
-
-    const topics = [
-      ...desiredOrder.filter(t => topicsSet.includes(t)),
-      ...topicsSet.filter(t => !desiredOrder.includes(t)).sort()
-    ];
-
+  function buildTopicButtons(items) {
     topicBar.innerHTML = '';
 
-    topics.forEach(topic => {
-      const btn = document.createElement('button');
+    var desiredOrder = ['Human modeling', 'Robust planning', 'Continual adaptation', 'Others'];
+
+    // Collect which topics actually exist
+    var topicsSet = {};
+    items.forEach(function (i) { topicsSet[i.topic] = true; });
+
+    var topics = [];
+    desiredOrder.forEach(function (t) {
+      if (topicsSet[t]) topics.push(t);
+    });
+    // Add any extra topics at the end (if we ever have any)
+    for (var t in topicsSet) {
+      if (topicsSet.hasOwnProperty(t) && desiredOrder.indexOf(t) === -1) {
+        topics.push(t);
+      }
+    }
+
+    topics.forEach(function (topic) {
+      var btn = document.createElement('button');
       btn.type = 'button';
       btn.textContent = topic;
-      btn.dataset.topic = topic;
+      btn.setAttribute('data-topic', topic);
 
-      btn.addEventListener('click', () => {
-        // highlight active
-        qsa('#topic-filters button').forEach(b =>
-          b.classList.toggle('is-active', b === btn)
-        );
-
-        // show only this topic
-        items.forEach(i => {
-          i.node.style.display = (i.topic === topic) ? '' : 'none';
+      btn.addEventListener('click', function () {
+        qsa('#topic-filters button').forEach(function (b) {
+          b.classList.toggle('is-active', b === btn);
         });
 
-        const count = items.filter(i => i.topic === topic).length;
-        if (summary) {
-          summary.textContent = `Showing ${count} item(s) in topic “${topic}”.`;
-        }
+        var count = 0;
+        items.forEach(function (i) {
+          if (i.topic === topic) {
+            i.node.style.display = '';
+            count += 1;
+          } else {
+            i.node.style.display = 'none';
+          }
+        });
+
+        summary.textContent = 'Showing ' + count + ' item(s) in topic "' + topic + '".';
       });
 
       topicBar.appendChild(btn);
     });
 
-    // auto-select first topic (Human modeling if present)
-    const firstBtn = topicBar.querySelector('button');
+    var firstBtn = topicBar.querySelector('button');
     if (firstBtn) firstBtn.click();
   }
 
-  function setMode(mode){
-    const items = readProjects();
+  function setMode(mode) {
+    var items = readProjects();
 
-    // Global newest → oldest sort for ALL modes
-    const sortedItems = items.slice().sort((a, b) => b.date.localeCompare(a.date));
+    buttons.forEach(function (b) {
+      var pressed = (b.getAttribute('data-mode') === mode) ? 'true' : 'false';
+      b.setAttribute('aria-pressed', pressed);
+    });
 
-    // Update button pressed state
-    buttons.forEach(b =>
-      b.setAttribute('aria-pressed', String(b.dataset.mode === mode))
-    );
-
-    const counts = {
-      all: sortedItems.length,
-      selected: sortedItems.filter(i => i.selected).length,
-      topics: new Set(sortedItems.map(i => i.topic)).size
-    };
+    var total = items.length;
+    var selectedCount = items.filter(function (i) { return i.selected; }).length;
+    var topicsSet = {};
+    items.forEach(function (i) { topicsSet[i.topic] = true; });
+    var topicCount = Object.keys(topicsSet).length; // currently unused, but kept for clarity
 
     if (mode === 'selected') {
-      if (byDate) byDate.style.display  = 'none';
-      if (byTopic) byTopic.style.display = '';
-      if (topicBar) topicBar.style.display = 'none';
+      byDate.style.display  = 'none';
+      byTopic.style.display = '';
+      topicBar.style.display = 'none';
 
-      // Enforce newest → oldest order and filter by selected
-      sortedItems.forEach(i => {
-        if (byTopic) byTopic.appendChild(i.node);
+      items.forEach(function (i) {
         i.node.style.display = i.selected ? '' : 'none';
       });
 
-      if (summary) {
-        summary.textContent = `Showing ${counts.selected} selected item(s) of ${counts.all}.`;
-      }
+      summary.textContent =
+        'Showing ' + selectedCount + ' selected item(s) of ' + total + '.';
 
     } else if (mode === 'topic') {
-      if (byDate) byDate.style.display  = 'none';
-      if (byTopic) byTopic.style.display = '';
-      if (topicBar) topicBar.style.display = 'flex';
+      byDate.style.display  = 'none';
+      byTopic.style.display = '';
+      topicBar.style.display = 'flex';
 
-      // Enforce newest → oldest order before topic filtering
-      sortedItems.forEach(i => {
-        if (byTopic) byTopic.appendChild(i.node);
-        i.node.style.display = '';
-      });
+      items.forEach(function (i) { i.node.style.display = ''; });
+      buildTopicButtons(items);
 
-      buildTopicButtons(sortedItems);
+      // summary is updated when topic buttons are clicked
 
     } else { // mode === 'date'
-      if (byTopic) byTopic.style.display = 'none';
-      if (byDate)  byDate.style.display  = '';
-      if (topicBar) topicBar.style.display = 'none';
-      if (byDate) byDate.innerHTML = '';
+      byTopic.style.display = 'none';
+      byDate.style.display  = '';
+      topicBar.style.display = 'none';
+      byDate.innerHTML = '';
 
-      const sorted = sortedItems;
-
-      // Group by YEAR only
-      const yearMap = new Map();
-      sorted.forEach(i => {
-        const year = (i.date || '1970-01-01').slice(0, 4);
-        if (!yearMap.has(year)) yearMap.set(year, []);
-        yearMap.get(year).push(i);
+      // sort by date (newest first)
+      var sorted = items.slice().sort(function (a, b) {
+        return b.date.localeCompare(a.date);
       });
 
-      // Render groups by year (newest year first)
-      [...yearMap.keys()].sort((a,b) => b.localeCompare(a)).forEach(year => {
-        const g = document.createElement('div');
-        g.className = 'group';
+      // group by year
+      var yearMap = {};
+      sorted.forEach(function (i) {
+        var year = (i.date || '1970-01-01').slice(0, 4);
+        if (!yearMap[year]) yearMap[year] = [];
+        yearMap[year].push(i);
+      });
 
-        const h = document.createElement('h3');
-        h.textContent = year;
-        g.appendChild(h);
+      // render groups newest year first
+      Object.keys(yearMap).sort(function (a, b) { return b.localeCompare(a); })
+        .forEach(function (year) {
+          var g = document.createElement('div');
+          g.className = 'group';
 
-        yearMap.get(year).forEach(i => {
-          g.appendChild(i.node.cloneNode(true));
+          var h = document.createElement('h3');
+          h.textContent = year;
+          g.appendChild(h);
+
+          yearMap[year].forEach(function (i) {
+            g.appendChild(i.node.cloneNode(true));
+          });
+
+          byDate.appendChild(g);
         });
 
-        if (byDate) byDate.appendChild(g);
-      });
-
-      if (summary) {
-        summary.textContent = `Showing all ${counts.all} item(s) grouped by year (newest first).`;
-      }
+      summary.textContent = 'Showing all ' + total + ' item(s) grouped by year.';
     }
 
-    // Update URL ?mode=
-    const url = new URL(window.location.href);
-    url.searchParams.set('mode', mode);
-    window.history.replaceState({}, '', url);
+    // update URL query param (optional; safe if URL exists)
+    if (typeof URL === 'function') {
+      var url = new URL(window.location.href);
+      url.searchParams.set('mode', mode);
+      window.history.replaceState({}, '', url);
+    }
   }
 
-  // Wire top buttons
-  buttons.forEach(b =>
-    b.addEventListener('click', () => setMode(b.dataset.mode))
-  );
+  // hook up the mode buttons
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      setMode(b.getAttribute('data-mode'));
+    });
+  });
 
-  // Default: show all by date (unless URL overrides)
-  const initialMode =
-    new URL(window.location.href).searchParams.get('mode') ?? 'date';
-  setMode(initialMode);
+  // default mode: show all by date
+  setMode('date');
 });
 </script>
 
 
-*, † indicate equal contributions
-
-<!-- Controls -->
-<div class="content-switcher" role="toolbar" aria-label="Content view">
-  <button type="button" data-mode="selected" aria-pressed="true">Show selected</button>
-  <button type="button" data-mode="date" aria-pressed="false">Show all by date</button>
-  <button type="button" data-mode="topic" aria-pressed="false">Show all by topic</button>
+<div class="content-switcher">
+  <button type="button" data-mode="selected" aria-pressed="false">
+    Show selected
+  </button>
+  <button type="button" data-mode="date" aria-pressed="true">
+    Show all by date
+  </button>
+  <button type="button" data-mode="topic" aria-pressed="false">
+    Show all by topic
+  </button>
 </div>
-<div id="content-summary" style="margin:.25rem 0 1rem;color:#6b7280;"></div>
-<!-- Topic filter buttons (used in "Show all by topic" mode) -->
-<div id="topic-filters" class="topic-switcher" style="display:none;"></div>
 
+<p id="content-summary" class="summary-line"></p>
 
-<!-- Topic (original order) container -->
+<div id="topic-filters"></div>
+
 <div id="by-topic">
-  <!-- Wrap each existing section in a <section class="proj"> with metadata -->
-  
 
+<!-- -------------- TOPIC SECTIONS (unchanged content) -------------- -->
+<!-- Keep all your <section class="proj" ...> blocks here exactly as before.
+     I’m not rewriting them to avoid messing up your publication list;
+     just place them under this comment. -->
+
+<section class="proj" markdown="1" data-topic="Continual adaptation" data-date="2025-12-01" data-selected="true">
+<div class="pub">
+  <div class="thumb"><img src="/images/mimicdroid.gif" alt="Project teaser"></div>
+  <div class="info">
+    <strong>MimicDroid: In-Context Learning for Humanoid Robot Manipulation from Human Play Videos</strong><br>
+        <span class="pub-authors">
+      Rutav Shah, <strong>Shuijing Liu*</strong>, Qi Wang*, and
+      <a href="#" class="more-authors" data-target="authors-mimicdroid" aria-expanded="false">5 more authors</a>
+      <span id="authors-mimicdroid" class="authors-rest is-hidden"> Zhenyu Jiang*, Sateesh Kumar, Mingyo Seo, Roberto Martín-Martín, Yuke Zhu.</span>
+    </span><br>
+    Under review, 2025. <br>
+    <a href="https://arxiv.org/abs/2509.09769" target="_blank">Paper</a> |
+    <a href="https://ut-austin-rpl.github.io/MimicDroid/" target="_blank">Website</a> |
+    <a href="https://github.com/UT-Austin-RPL/mimicdroid-robocasa/tree/latest" target="_blank">Benchmark</a> |
+    <a href="https://huggingface.co/datasets/Rutav/MimicDroidDataset/tree/main" target="_blank">Dataset</a> 
+  <br>
+  </div>
+</div>
+</section>
+
+<section class="proj" markdown="1" data-topic="Others" data-date="2025-12-01" data-selected="false">
+<div class="pub">
+  <div class="thumb"><img src="/images/beyond-canes.png" alt="Project teaser"></div>
+  <div class="info">
+    <strong>Beyond Canes and Guide Dogs: A Survey of 40 Years of Robotics for Assisting People with Visual Impairments in Navigation, Wayfinding, and Orientation</strong><br>
+        <span class="pub-authors">
+      John Pohovey, Maria Lusardi*, Aamir Hasan*, and
+      <a href="#" class="more-authors" data-target="authors-beyond" aria-expanded="false">5 more authors</a>
+      <span id="authors-beyond" class="authors-rest is-hidden"> <strong>Shuijing Liu†</strong>, Andre Schreiber†, Samuel Olatunji, Wendy Rogers, Katherine Driggs-Campbell</span>
+    </span><br>
+    Under review, 2025. <br>
+    <a href="https://engrxiv.org/preprint/view/4985" target="_blank">Paper</a> |
+    <a href="https://www.openicpsr.org/openicpsr/project/235425/version/V1/view" target="_blank">Dataset</a> 
+  <br>
+  </div>
+</div>
+</section>
+
+<section class="proj" markdown="1" data-topic="Robust planning" data-date="2025-12-01" data-selected="false">
+<div class="pub">
+  <div class="thumb"><img src="/images/scoop.gif" alt="Project teaser"></div>
+  <div class="info">
+    <strong>Gotta Scoop ’Em All: Sim-and-Real Co-Training of Graph-based Neural Dynamics for Long-Horizon Scooping</strong><br>
+        <span class="pub-authors">
+      Kaiwen Hong, Haonan Chen*, Jiaming Xu, and
+      <a href="#" class="more-authors" data-target="authors-gotta" aria-expanded="false">5 more authors</a>
+      <span id="authors-gotta" class="authors-rest is-hidden"> Runxuan Wang, Kaylan Wang, Mingtong Zhang, <strong>Shuijing Liu</strong>, Yifan Zhu, Yunzhu Li, Katherine Driggs-Campbell </span>
+    </span><br>
+    Under review, 2025. <br>
+
+  </div>
+</div>
+</section>
 
 <section class="proj" markdown="1"
          data-topic="Robust planning"
@@ -305,295 +430,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 </section>
 
-<section class="proj" markdown="1"
-         data-topic="Robust planning"
-         data-date="2017-12-11"
-         data-selected="false">
 
-<div class="pub">
-  <div class="thumb">
-    <img src="/images/rarl.gif" alt="CrowdNav demo">
-  </div>
-
-  <div class="info">
-  
-    <strong>Robust Deep Reinforcement Learning with Adversarial Attacks</strong><br>
-     
-    <span class="pub-authors">
-      Anay Pattanaik, <strong>Shuijing Liu*</strong>, Zhenyi Tang*, and
-      <a href="#" class="more-authors" data-target="authors-robust" aria-expanded="false">
-        2 more authors
-      </a>
-      <span id="authors-robust" class="authors-rest is-hidden">
-        Gautham Bommannan, Girish Chowdhary.
-      </span>
-    </span><br>
-    In AAMAS 2018 (Extended abstract).<br>
-
-    <a href="https://arxiv.org/abs/1712.03632" target="_blank">Paper</a> |
-    <a href="https://www.youtube.com/watch?v=8xPaca3cjEU" target="_blank">Video</a> |
-    <a href="https://shuijing725.github.io/files/Supplementary_for_Robust_Deep_Reinforcement_Learning_with_Adversarial_Attacks.pd" target="_blank">Supplementary materials</a><br>
-
-
-  </div>
-</div>
-
-</section>
-
-<section class="proj" markdown="1"
-         data-topic="Robust planning"
-         data-date="2021-05-01"
-         data-selected="true">
-
-<div class="pub">
-  <div class="thumb">
-    <img src="/images/crowdnav.jpg" alt="CrowdNav demo">
-  </div>
-
-  <div class="info">
-  
-    <strong>Decentralized Structural-RNN for Robot Crowd Navigation with Deep Reinforcement Learning</strong><br>
-     
-    <span class="pub-authors">
-      <strong>Shuijing Liu*</strong>, Peixin Chang*, Weihang Liang†, and
-      <a href="#" class="more-authors" data-target="authors-decentrialized" aria-expanded="false">
-        2 more authors
-      </a>
-      <span id="authors-decentrialized" class="authors-rest is-hidden">
-        Neeloy Chakraborty†, Katherine Driggs-Campbell.
-      </span>
-    </span><br>
-    In ICRA 2021.<br>
-
-    <a href="https://arxiv.org/abs/2011.04820" target="_blank">Paper</a> |
-    <a href="https://sites.google.com/view/crowdnav-ds-rnn/home" target="_blank">Website</a> |
-    <a href="https://youtu.be/bYO-1IAjzgY" target="_blank">Video</a> |
-    <a href="https://github.com/Shuijing725/CrowdNav_DSRNN" target="_blank">Code</a> <br>
-
-
-  </div>
-</div>
-
-</section>
-
-<section class="proj" markdown="1"
-         data-topic="Robust planning"
-         data-date="2023-05-01"
-         data-selected="false">
-
-<div class="pub">
-  <div class="thumb">
-    <img src="/images/socialZoneGraph.png" alt="CrowdNav demo">
-  </div>
-
-  <div class="info">
-  
-    <strong>Intention Aware Robot Crowd Navigation with Attention-Based Interaction Graph</strong><br>
-     
-    <span class="pub-authors">
-      <strong>Shuijing Liu</strong>, Peixin Chang, Zhe Huang, and
-      <a href="#" class="more-authors" data-target="authors-intention" aria-expanded="true">
-        6 more authors
-      </a>
-      <span id="authors-intention" class="authors-rest is-hidden">
-        Neeloy Chakraborty, Kaiwen Hong, Weihang Liang, Junyi Geng, D. Livingston McPherson, Katherine Driggs-Campbell.
-      </span>
-    </span><br>
-    In ICRA 2023.<br>
-
-    <a href="https://arxiv.org/abs/2203.01821" target="_blank">Paper</a> |
-    <a href="https://sites.google.com/view/intention-aware-crowdnav/home" target="_blank">Website</a> |
-    <a href="https://www.youtube.com/watch?v=nxpxhF019VA" target="_blank">Video</a> |
-    <a href="https://github.com/Shuijing725/CrowdNav_Prediction_AttnGraph" target="_blank">Code</a> <br>
-    <a href="https://www.lastmilerobotics.dfl.ae/home" target="_blank"><span style="color:orange">Best poster award at IROS 2023 Last-Mile Robotics Workshop</span></a> <br>
-    
-
-      </div>
-    </div>
-    
-</section>
-
-
-<!-- ===================== JOURNAL ===================== -->
-
-<section class="proj" markdown="1" data-topic="Human modeling" data-date="2024-01-01" data-selected="true">
-<div class="pub">
-  <div class="thumb"><img src="/images/wayfinding_dialogue.png" alt="Project teaser"></div>
-  <div class="info">
-    <strong>DRAGON: A Dialogue-Based Robot for Assistive Navigation with Visual Language Grounding</strong><br>
-    <span class="pub-authors">
-      <strong>Shuijing Liu</strong>, Aamir Hasan, Kaiwen Hong,
-      <a href="#" class="more-authors" data-target="authors-dragon" aria-expanded="false">7 more authors</a>
-      <span id="authors-dragon" class="authors-rest is-hidden"> Runxuan Wang, Peixin Chang, Zachary Mizrachi, Justin Lin, D. Livingston McPherson, Wendy A. Rogers, Katherine Driggs-Campbell.</span>
-    </span><br>
-    In IEEE Robotics and Automation Letters (RA-L), 2024.<br>
-    <a href="https://arxiv.org/abs/2307.06924" target="_blank">Paper</a> |
-    <a href="https://sites.google.com/view/dragon-wayfinding" target="_blank">Website</a> |
-    <a href="https://youtube.com/playlist?list=PLL4IPhbfiY3YkITpyLjeroak_wBn151pn" target="_blank">Video</a> |
-    <a href="https://github.com/Shuijing725/Dragon_Wayfinding/" target="_blank">Code</a>
-  </div>
-</div>
-</section>
-
-<!-- ===================== CONFERENCE ===================== -->
-
-
-<section class="proj" markdown="1" data-topic="Continual adaptation" data-date="2023-05-01" data-selected="true">
-<div class="pub">
-  <div class="thumb"><img src="/images/rsi3.png" alt="Project teaser"></div>
-  <div class="info">
-    <strong>A Data-Efficient Visual-Audio Representation with Intuitive Fine-tuning for Voice-Controlled Robots</strong><br>
-    <span class="pub-authors">
-      Peixin Chang, <strong>Shuijing Liu</strong>, Tianchen Ji,
-      <a href="#" class="more-authors" data-target="authors-difvar" aria-expanded="false">3 more authors</a>
-      <span id="authors-difvar" class="authors-rest is-hidden"> Neeloy Chakraborty, Kaiwen Hong, Katherine Driggs-Champbell.</span>
-    </span><br>
-    In CoRL 2023.<br>
-    <a href="https://arxiv.org/abs/2301.09749" target="_blank">Paper</a> |
-    <a href="https://sites.google.com/site/changpeixin/home/Research/a-data-efficient-visual-audio-representation-with-intuitive-fine-tuning" target="_blank">Website</a> |
-    <a href="https://www.youtube.com/watch?v=YsYIAwZW25g" target="_blank">Video</a><br>
-  </div>
-</div>
-</section>
-
-<section class="proj" markdown="1" data-topic="Robust planning" data-date="2023-06-01" data-selected="false">
-<div class="pub">
-  <div class="thumb"><img src="/images/stow_ours.gif" alt="Project teaser"></div>
-  <div class="info">
-    <strong>Predicting Object Interactions with Behavior Primitives: An Application in Stowing Tasks</strong><br>
-    <span class="pub-authors">
-      Haonan Chen, Yilong Niu, Kaiwen Hong,
-      <a href="#" class="more-authors" data-target="authors-stow" aria-expanded="false">4 more authors</a>
-      <span id="authors-stow" class="authors-rest is-hidden"> <strong>Shuijing Liu</strong>, Yixuan Wang, Yunzhu Li, Katherine Driggs-Campbell.</span>
-    </span><br>
-    In CoRL 2023. <span style="color:orange">(Best Student Paper Award Finalist)</span><br>
-    <a href="https://openreview.net/pdf?id=VH6WIPF4Sj" target="_blank">Paper</a> |
-    <a href="https://haonan16.github.io/stow_page" target="_blank">Website</a> |
-    <a href="https://github.com/haonan16/Stow/" target="_blank">Code</a>
-  </div>
-</div>
-</section>
-
-<section class="proj" markdown="1" data-topic="Robust planning" data-date="2023-05-01" data-selected="false">
-<div class="pub">
-  <div class="thumb"><img src="/images/pas_crowdnav.jpg" alt="Project teaser"></div>
-  <div class="info">
-    <strong>Occlusion-Aware Crowd Navigation Using People as Sensors</strong><br>
-    <span class="pub-authors">
-      Ye-Ji Mun, Masha Itkina, <strong>Shuijing Liu</strong>,
-      <a href="#" class="more-authors" data-target="authors-pas" aria-expanded="false">1 more author</a>
-      <span id="authors-pas" class="authors-rest is-hidden"> Katherine Driggs-Campbell.</span>
-    </span><br>
-    In ICRA 2023.<br>
-    <a href="https://arxiv.org/abs/2210.00552" target="_blank">Paper</a> |
-    <a href="https://www.youtube.com/watch?v=BG5s7w5BdME" target="_blank">Video</a> |
-    <a href="https://github.com/yejimun/PaS_CrowdNav" target="_blank">Code</a> |
-    <a href="https://techxplore.com/news/2022-11-autonomous-mobile-robots-crowded-spaces.html" target="_blank">Media coverage</a>
-  </div>
-</div>
-</section>
-
-<section class="proj" markdown="1" data-topic="Human modeling" data-date="2023-10-01" data-selected="false">
-<div class="pub">
-  <div class="thumb"><img src="/images/SaberVAE_off_road_traj.gif" alt="Project teaser"></div>
-  <div class="info">
-    <strong>Structural Attention-Based Recurrent Variational Autoencoder for Highway Vehicle Anomaly Detection</strong><br>
-    <span class="pub-authors">
-      Neeloy Chakraborty, Aamir Hasan*, <strong>Shuijing Liu</strong>,
-      <a href="#" class="more-authors" data-target="authors-saber" aria-expanded="false">3 more authors</a>
-      <span id="authors-saber" class="authors-rest is-hidden"> Tianchen Ji, Eric Liang, D. Livingston McPherson, Katherine Driggs-Campbell.</span>
-    </span><br>
-    In AAMAS 2023 (Full paper).<br>
-    <a href="https://arxiv.org/abs/2301.03634" target="_blank">Paper</a> |
-    <a href="https://sites.google.com/illinois.edu/saber-vae" target="_blank">Website</a> |
-    <a href="https://gitlab.engr.illinois.edu/hubris/highway-anomaly-detection" target="_blank">Code</a>
-  </div>
-</div>
-</section>
-
-<section class="proj" markdown="1" data-topic="Human modeling" data-date="2022-10-01" data-selected="false">
-<div class="pub">
-  <div class="thumb"><img src="/images/itsc.jpg" alt="Project teaser"></div>
-  <div class="info">
-    <strong>Combining Model-Based Controllers and Generative Adversarial Imitation Learning for Traffic Simulation</strong><br>
-    <span class="pub-authors">
-      Haonan Chen, Tianchen Ji, <strong>Shuijing Liu</strong>,
-      <a href="#" class="more-authors" data-target="authors-itsc" aria-expanded="false">1 more author</a>
-      <span id="authors-itsc" class="authors-rest is-hidden"> Katherine Driggs-Campbell.</span>
-    </span><br>
-    In ITSC 2022.<br>
-    <a href="https://ieeexplore.ieee.org/abstract/document/9922261" target="_blank">Paper</a>
-  </div>
-</div>
-</section>
-
-<section class="proj" markdown="1" data-topic="Human modeling" data-date="2022-05-01" data-selected="true">
-<div class="pub">
-  <div class="thumb"><img src="/images/TraitVAE.gif" alt="Project teaser"></div>
-  <div class="info">
-    <strong>Learning to Navigate Intersections with Unsupervised Driver Trait Inference</strong><br>
-    <span class="pub-authors">
-      <strong>Shuijing Liu</strong>, Peixin Chang, Haonan Chen,
-      <a href="#" class="more-authors" data-target="authors-traitvae" aria-expanded="false">2 more authors</a>
-      <span id="authors-traitvae" class="authors-rest is-hidden"> Neeloy Chakraborty, Katherine Driggs-Campbell.</span>
-    </span><br>
-    In ICRA 2022.<br>
-    <a href="https://arxiv.org/abs/2109.06783" target="_blank">Paper</a> |
-    <a href="https://sites.google.com/view/vae-trait-inference/home" target="_blank">Website</a> |
-    <a href="https://github.com/Shuijing725/VAE_trait_inference" target="_blank">Code</a> |
-    <a href="https://www.youtube.com/watch?v=wqbgsjSvkAo&t=1s" target="_blank">Video</a>
-  </div>
-</div>
-</section>
-
-<section class="proj" markdown="1" data-topic="Others" data-date="2022-05-01" data-selected="false">
-<div class="pub">
-  <div class="thumb"></div>
-  <div class="info">
-    <strong>Off Environment Evaluation Using Convex Risk Minimization</strong><br>
-    <span class="pub-authors">
-      Pulkit Katdare, <strong>Shuijing Liu</strong>, Katherine Driggs-Campbell
-    </span><br>
-    In ICRA 2022.<br>
-    <a href="https://arxiv.org/abs/2112.11532" target="_blank">Paper</a> |
-    <a href="https://github.com/pulkitkatdare/offenveval" target="_blank">Code</a>
-  </div>
-</div>
-</section>
-
-<section class="proj" markdown="1" data-topic="Human modeling" data-date="2020-10-01" data-selected="false">
-<div class="pub">
-  <div class="thumb"><img src="/images/rsi_opening.png" alt="Project teaser"></div>
-  <div class="info">
-    <strong>Robot Sound Interpretation: Combining Sight and Sound in Learning-Based Control</strong><br>
-    <span class="pub-authors">
-      Peixin Chang, <strong>Shuijing Liu</strong>, Haonan Chen,
-      <a href="#" class="more-authors" data-target="authors-rsi" aria-expanded="false">1 more author</a>
-      <span id="authors-rsi" class="authors-rest is-hidden"> Katherine Driggs-Campbell.</span>
-    </span><br>
-    In IROS 2020.<br>
-    <a href="https://arxiv.org/abs/1909.09172" target="_blank">Paper</a> |
-    <a href="https://sites.google.com/site/changpeixin/home/Research/robot_sound_interpretation" target="_blank">Website</a> |
-    <a href="https://www.youtube.com/watch?v=0ONGQwhGn_Y" target="_blank">Video</a>
-  </div>
-</div>
-</section>
-
-<section class="proj" markdown="1" data-topic="Others" data-date="2025-05-01" data-selected="false">
-<div class="pub">
-  <div class="thumb"></div>
-  <div class="info">
-    <strong>Developing Wayfinding Robotic Support for Older Persons with Vision Impairments</strong><br>
-        <span class="pub-authors">
-      Samuel A. Olatunji, Megan A. Bayles, <strong>Shuijing Liu</strong>, and
-      <a href="#" class="more-authors" data-target="authors-developing" aria-expanded="false">3 more authors</a>
-      <span id="womd-authors-rest" class="authors-rest is-hidden"> Aamir Hasan, Katherine Driggs-Campbell, and Wendy A. Rogers.</span>
-    </span><br>
-    In Assistive Technology, 2025. <br>
-    <a href="https://www.tandfonline.com/doi/abs/10.1080/10400435.2025.2525823" target="_blank">Paper</a> <br>
-  </div>
-</div>
-</section>
 
 <section class="proj" markdown="1" data-topic="Human modeling" data-date="2025-09-01" data-selected="true">
 <div class="pub">
@@ -696,59 +533,262 @@ document.addEventListener('DOMContentLoaded', function () {
 </div>
 </section>
 
-<section class="proj" markdown="1" data-topic="Continual adaptation" data-date="2025-12-01" data-selected="true">
+<section class="proj" markdown="1" data-topic="Others" data-date="2025-05-01" data-selected="false">
 <div class="pub">
-  <div class="thumb"><img src="/images/mimicdroid.gif" alt="Project teaser"></div>
+  <div class="thumb"></div>
   <div class="info">
-    <strong>MimicDroid: In-Context Learning for Humanoid Robot Manipulation from Human Play Videos</strong><br>
+    <strong>Developing Wayfinding Robotic Support for Older Persons with Vision Impairments</strong><br>
         <span class="pub-authors">
-      Rutav Shah, <strong>Shuijing Liu*</strong>, Qi Wang*, and
-      <a href="#" class="more-authors" data-target="authors-mimicdroid" aria-expanded="false">5 more authors</a>
-      <span id="authors-mimicdroid" class="authors-rest is-hidden"> Zhenyu Jiang*, Sateesh Kumar, Mingyo Seo, Roberto Martín-Martín, Yuke Zhu.</span>
+      Samuel A. Olatunji, Megan A. Bayles, <strong>Shuijing Liu</strong>, and
+      <a href="#" class="more-authors" data-target="authors-developing" aria-expanded="false">3 more authors</a>
+      <span id="womd-authors-rest" class="authors-rest is-hidden"> Aamir Hasan, Katherine Driggs-Campbell, and Wendy A. Rogers.</span>
     </span><br>
-    Under review, 2025. <br>
-    <a href="https://arxiv.org/abs/2509.09769" target="_blank">Paper</a> |
-    <a href="https://ut-austin-rpl.github.io/MimicDroid/" target="_blank">Website</a> |
-    <a href="https://github.com/UT-Austin-RPL/mimicdroid-robocasa/tree/latest" target="_blank">Benchmark</a> |
-    <a href="https://huggingface.co/datasets/Rutav/MimicDroidDataset/tree/main" target="_blank">Dataset</a> 
-  <br>
+    In Assistive Technology, 2025. <br>
+    <a href="https://www.tandfonline.com/doi/abs/10.1080/10400435.2025.2525823" target="_blank">Paper</a> <br>
   </div>
 </div>
 </section>
 
-<section class="proj" markdown="1" data-topic="Others" data-date="2025-12-01" data-selected="false">
+<section class="proj" markdown="1" data-topic="Human modeling" data-date="2024-01-01" data-selected="true">
 <div class="pub">
-  <div class="thumb"><img src="/images/beyond-canes.png" alt="Project teaser"></div>
+  <div class="thumb"><img src="/images/wayfinding_dialogue.png" alt="Project teaser"></div>
   <div class="info">
-    <strong>Beyond Canes and Guide Dogs: A Survey of 40 Years of Robotics for Assisting People with Visual Impairments in Navigation, Wayfinding, and Orientation</strong><br>
-        <span class="pub-authors">
-      John Pohovey, Maria Lusardi*, Aamir Hasan*, and
-      <a href="#" class="more-authors" data-target="authors-beyond" aria-expanded="false">5 more authors</a>
-      <span id="authors-beyond" class="authors-rest is-hidden"> <strong>Shuijing Liu†</strong>, Andre Schreiber†, Samuel Olatunji, Wendy Rogers, Katherine Driggs-Campbell</span>
+    <strong>DRAGON: A Dialogue-Based Robot for Assistive Navigation with Visual Language Grounding</strong><br>
+    <span class="pub-authors">
+      <strong>Shuijing Liu</strong>, Aamir Hasan, Kaiwen Hong,
+      <a href="#" class="more-authors" data-target="authors-dragon" aria-expanded="false">7 more authors</a>
+      <span id="authors-dragon" class="authors-rest is-hidden"> Runxuan Wang, Peixin Chang, Zachary Mizrachi, Justin Lin, D. Livingston McPherson, Wendy A. Rogers, Katherine Driggs-Campbell.</span>
     </span><br>
-    Under review, 2025. <br>
-    <a href="https://engrxiv.org/preprint/view/4985" target="_blank">Paper</a> |
-    <a href="https://www.openicpsr.org/openicpsr/project/235425/version/V1/view" target="_blank">Dataset</a> 
-  <br>
+    In IEEE Robotics and Automation Letters (RA-L), 2024.<br>
+    <a href="https://arxiv.org/abs/2307.06924" target="_blank">Paper</a> |
+    <a href="https://sites.google.com/view/dragon-wayfinding" target="_blank">Website</a> |
+    <a href="https://youtube.com/playlist?list=PLL4IPhbfiY3YkITpyLjeroak_wBn151pn" target="_blank">Video</a> |
+    <a href="https://github.com/Shuijing725/Dragon_Wayfinding/" target="_blank">Code</a>
   </div>
 </div>
 </section>
 
-<section class="proj" markdown="1" data-topic="Robust planning" data-date="2025-12-01" data-selected="false">
-<div class="pub">
-  <div class="thumb"><img src="/images/scoop.gif" alt="Project teaser"></div>
-  <div class="info">
-    <strong>Gotta Scoop ’Em All: Sim-and-Real Co-Training of Graph-based Neural Dynamics for Long-Horizon Scooping</strong><br>
-        <span class="pub-authors">
-      Kaiwen Hong, Haonan Chen*, Jiaming Xu, and
-      <a href="#" class="more-authors" data-target="authors-gotta" aria-expanded="false">5 more authors</a>
-      <span id="authors-gotta" class="authors-rest is-hidden"> Runxuan Wang, Kaylan Wang, Mingtong Zhang, <strong>Shuijing Liu</strong>, Yifan Zhu, Yunzhu Li, Katherine Driggs-Campbell </span>
-    </span><br>
-    Under review, 2025. <br>
+<section class="proj" markdown="1"
+         data-topic="Robust planning"
+         data-date="2023-05-01"
+         data-selected="false">
 
+<div class="pub">
+  <div class="thumb">
+    <img src="/images/socialZoneGraph.png" alt="CrowdNav demo">
+  </div>
+
+  <div class="info">
+  
+    <strong>Intention Aware Robot Crowd Navigation with Attention-Based Interaction Graph</strong><br>
+     
+    <span class="pub-authors">
+      <strong>Shuijing Liu</strong>, Peixin Chang, Zhe Huang, and
+      <a href="#" class="more-authors" data-target="authors-intention" aria-expanded="true">
+        6 more authors
+      </a>
+      <span id="authors-intention" class="authors-rest is-hidden">
+        Neeloy Chakraborty, Kaiwen Hong, Weihang Liang, Junyi Geng, D. Livingston McPherson, Katherine Driggs-Campbell.
+      </span>
+    </span><br>
+    In ICRA 2023.<br>
+
+    <a href="https://arxiv.org/abs/2203.01821" target="_blank">Paper</a> |
+    <a href="https://sites.google.com/view/intention-aware-crowdnav/home" target="_blank">Website</a> |
+    <a href="https://www.youtube.com/watch?v=nxpxhF019VA" target="_blank">Video</a> |
+    <a href="https://github.com/Shuijing725/CrowdNav_Prediction_AttnGraph" target="_blank">Code</a> <br>
+    <a href="https://www.lastmilerobotics.dfl.ae/home" target="_blank"><span style="color:orange">Best poster award at IROS 2023 Last-Mile Robotics Workshop</span></a> <br>
+    
+
+      </div>
+    </div>
+    
+</section>
+
+<section class="proj" markdown="1" data-topic="Human modeling" data-date="2022-05-01" data-selected="true">
+<div class="pub">
+  <div class="thumb"><img src="/images/TraitVAE.gif" alt="Project teaser"></div>
+  <div class="info">
+    <strong>Learning to Navigate Intersections with Unsupervised Driver Trait Inference</strong><br>
+    <span class="pub-authors">
+      <strong>Shuijing Liu</strong>, Peixin Chang, Haonan Chen,
+      <a href="#" class="more-authors" data-target="authors-traitvae" aria-expanded="false">2 more authors</a>
+      <span id="authors-traitvae" class="authors-rest is-hidden"> Neeloy Chakraborty, Katherine Driggs-Campbell.</span>
+    </span><br>
+    In ICRA 2022.<br>
+    <a href="https://arxiv.org/abs/2109.06783" target="_blank">Paper</a> |
+    <a href="https://sites.google.com/view/vae-trait-inference/home" target="_blank">Website</a> |
+    <a href="https://github.com/Shuijing725/VAE_trait_inference" target="_blank">Code</a> |
+    <a href="https://www.youtube.com/watch?v=wqbgsjSvkAo&t=1s" target="_blank">Video</a>
   </div>
 </div>
 </section>
+
+<section class="proj" markdown="1"
+         data-topic="Robust planning"
+         data-date="2021-05-01"
+         data-selected="true">
+
+<div class="pub">
+  <div class="thumb">
+    <img src="/images/crowdnav.jpg" alt="CrowdNav demo">
+  </div>
+
+  <div class="info">
+  
+    <strong>Decentralized Structural-RNN for Robot Crowd Navigation with Deep Reinforcement Learning</strong><br>
+     
+    <span class="pub-authors">
+      <strong>Shuijing Liu*</strong>, Peixin Chang*, Weihang Liang†, and
+      <a href="#" class="more-authors" data-target="authors-decentrialized" aria-expanded="false">
+        2 more authors
+      </a>
+      <span id="authors-decentrialized" class="authors-rest is-hidden">
+        Neeloy Chakraborty†, Katherine Driggs-Campbell.
+      </span>
+    </span><br>
+    In ICRA 2021.<br>
+
+    <a href="https://arxiv.org/abs/2011.04820" target="_blank">Paper</a> |
+    <a href="https://sites.google.com/view/crowdnav-ds-rnn/home" target="_blank">Website</a> |
+    <a href="https://youtu.be/bYO-1IAjzgY" target="_blank">Video</a> |
+    <a href="https://github.com/Shuijing725/CrowdNav_DSRNN" target="_blank">Code</a> <br>
+
+
+  </div>
+</div>
+
+</section>
+
+
+
+
+
+<section class="proj" markdown="1" data-topic="Continual adaptation" data-date="2023-05-01" data-selected="true">
+<div class="pub">
+  <div class="thumb"><img src="/images/rsi3.png" alt="Project teaser"></div>
+  <div class="info">
+    <strong>A Data-Efficient Visual-Audio Representation with Intuitive Fine-tuning for Voice-Controlled Robots</strong><br>
+    <span class="pub-authors">
+      Peixin Chang, <strong>Shuijing Liu</strong>, Tianchen Ji,
+      <a href="#" class="more-authors" data-target="authors-difvar" aria-expanded="false">3 more authors</a>
+      <span id="authors-difvar" class="authors-rest is-hidden"> Neeloy Chakraborty, Kaiwen Hong, Katherine Driggs-Champbell.</span>
+    </span><br>
+    In CoRL 2023.<br>
+    <a href="https://arxiv.org/abs/2301.09749" target="_blank">Paper</a> |
+    <a href="https://sites.google.com/site/changpeixin/home/Research/a-data-efficient-visual-audio-representation-with-intuitive-fine-tuning" target="_blank">Website</a> |
+    <a href="https://www.youtube.com/watch?v=YsYIAwZW25g" target="_blank">Video</a><br>
+  </div>
+</div>
+</section>
+
+<section class="proj" markdown="1" data-topic="Robust planning" data-date="2023-06-01" data-selected="false">
+<div class="pub">
+  <div class="thumb"><img src="/images/stow_ours.gif" alt="Project teaser"></div>
+  <div class="info">
+    <strong>Predicting Object Interactions with Behavior Primitives: An Application in Stowing Tasks</strong><br>
+    <span class="pub-authors">
+      Haonan Chen, Yilong Niu, Kaiwen Hong,
+      <a href="#" class="more-authors" data-target="authors-stow" aria-expanded="false">4 more authors</a>
+      <span id="authors-stow" class="authors-rest is-hidden"> <strong>Shuijing Liu</strong>, Yixuan Wang, Yunzhu Li, Katherine Driggs-Campbell.</span>
+    </span><br>
+    In CoRL 2023. <span style="color:orange">(Best Student Paper Award Finalist)</span><br>
+    <a href="https://openreview.net/pdf?id=VH6WIPF4Sj" target="_blank">Paper</a> |
+    <a href="https://haonan16.github.io/stow_page" target="_blank">Website</a> |
+    <a href="https://github.com/haonan16/Stow/" target="_blank">Code</a>
+  </div>
+</div>
+</section>
+
+<section class="proj" markdown="1" data-topic="Robust planning" data-date="2023-05-01" data-selected="false">
+<div class="pub">
+  <div class="thumb"><img src="/images/pas_crowdnav.jpg" alt="Project teaser"></div>
+  <div class="info">
+    <strong>Occlusion-Aware Crowd Navigation Using People as Sensors</strong><br>
+    <span class="pub-authors">
+      Ye-Ji Mun, Masha Itkina, <strong>Shuijing Liu</strong>,
+      <a href="#" class="more-authors" data-target="authors-pas" aria-expanded="false">1 more author</a>
+      <span id="authors-pas" class="authors-rest is-hidden"> Katherine Driggs-Campbell.</span>
+    </span><br>
+    In ICRA 2023.<br>
+    <a href="https://arxiv.org/abs/2210.00552" target="_blank">Paper</a> |
+    <a href="https://www.youtube.com/watch?v=BG5s7w5BdME" target="_blank">Video</a> |
+    <a href="https://github.com/yejimun/PaS_CrowdNav" target="_blank">Code</a> |
+    <a href="https://techxplore.com/news/2022-11-autonomous-mobile-robots-crowded-spaces.html" target="_blank">Media coverage</a>
+  </div>
+</div>
+</section>
+
+<section class="proj" markdown="1" data-topic="Human modeling" data-date="2023-10-01" data-selected="false">
+<div class="pub">
+  <div class="thumb"><img src="/images/SaberVAE_off_road_traj.gif" alt="Project teaser"></div>
+  <div class="info">
+    <strong>Structural Attention-Based Recurrent Variational Autoencoder for Highway Vehicle Anomaly Detection</strong><br>
+    <span class="pub-authors">
+      Neeloy Chakraborty, Aamir Hasan*, <strong>Shuijing Liu</strong>,
+      <a href="#" class="more-authors" data-target="authors-saber" aria-expanded="false">3 more authors</a>
+      <span id="authors-saber" class="authors-rest is-hidden"> Tianchen Ji, Eric Liang, D. Livingston McPherson, Katherine Driggs-Campbell.</span>
+    </span><br>
+    In AAMAS 2023 (Full paper).<br>
+    <a href="https://arxiv.org/abs/2301.03634" target="_blank">Paper</a> |
+    <a href="https://sites.google.com/illinois.edu/saber-vae" target="_blank">Website</a> |
+    <a href="https://gitlab.engr.illinois.edu/hubris/highway-anomaly-detection" target="_blank">Code</a>
+  </div>
+</div>
+</section>
+
+<section class="proj" markdown="1" data-topic="Human modeling" data-date="2022-10-01" data-selected="false">
+<div class="pub">
+  <div class="thumb"><img src="/images/itsc.jpg" alt="Project teaser"></div>
+  <div class="info">
+    <strong>Combining Model-Based Controllers and Generative Adversarial Imitation Learning for Traffic Simulation</strong><br>
+    <span class="pub-authors">
+      Haonan Chen, Tianchen Ji, <strong>Shuijing Liu</strong>,
+      <a href="#" class="more-authors" data-target="authors-itsc" aria-expanded="false">1 more author</a>
+      <span id="authors-itsc" class="authors-rest is-hidden"> Katherine Driggs-Campbell.</span>
+    </span><br>
+    In ITSC 2022.<br>
+    <a href="https://ieeexplore.ieee.org/abstract/document/9922261" target="_blank">Paper</a>
+  </div>
+</div>
+</section>
+
+
+<section class="proj" markdown="1" data-topic="Others" data-date="2022-05-01" data-selected="false">
+<div class="pub">
+  <div class="thumb"></div>
+  <div class="info">
+    <strong>Off Environment Evaluation Using Convex Risk Minimization</strong><br>
+    <span class="pub-authors">
+      Pulkit Katdare, <strong>Shuijing Liu</strong>, Katherine Driggs-Campbell
+    </span><br>
+    In ICRA 2022.<br>
+    <a href="https://arxiv.org/abs/2112.11532" target="_blank">Paper</a> |
+    <a href="https://github.com/pulkitkatdare/offenveval" target="_blank">Code</a>
+  </div>
+</div>
+</section>
+
+<section class="proj" markdown="1" data-topic="Human modeling" data-date="2020-10-01" data-selected="false">
+<div class="pub">
+  <div class="thumb"><img src="/images/rsi_opening.png" alt="Project teaser"></div>
+  <div class="info">
+    <strong>Robot Sound Interpretation: Combining Sight and Sound in Learning-Based Control</strong><br>
+    <span class="pub-authors">
+      Peixin Chang, <strong>Shuijing Liu</strong>, Haonan Chen,
+      <a href="#" class="more-authors" data-target="authors-rsi" aria-expanded="false">1 more author</a>
+      <span id="authors-rsi" class="authors-rest is-hidden"> Katherine Driggs-Campbell.</span>
+    </span><br>
+    In IROS 2020.<br>
+    <a href="https://arxiv.org/abs/1909.09172" target="_blank">Paper</a> |
+    <a href="https://sites.google.com/site/changpeixin/home/Research/robot_sound_interpretation" target="_blank">Website</a> |
+    <a href="https://www.youtube.com/watch?v=0ONGQwhGn_Y" target="_blank">Video</a>
+  </div>
+</div>
+</section>
+
+
+
 
 <section class="proj" markdown="1" data-topic="Human modeling" data-date="2023-05-01" data-selected="false">
 <div class="pub">
@@ -785,62 +825,69 @@ Rogers. </span>
 </div>
 </section>
 
+<section class="proj" markdown="1"
+         data-topic="Robust planning"
+         data-date="2017-12-11"
+         data-selected="false">
 
-  <!-- Do the same wrapping for your other sections:
-       Instruction Following Robot & Visual-Language Grounding
-       Manipulation
-       Machine Learning
-       Give each a data-date (YYYY-MM-DD) and set data-selected="true" only for the ones you want in “Show selected”. -->
+<div class="pub">
+  <div class="thumb">
+    <img src="/images/rarl.gif" alt="CrowdNav demo">
+  </div>
+
+  <div class="info">
+  
+    <strong>Robust Deep Reinforcement Learning with Adversarial Attacks</strong><br>
+     
+    <span class="pub-authors">
+      Anay Pattanaik, <strong>Shuijing Liu*</strong>, Zhenyi Tang*, and
+      <a href="#" class="more-authors" data-target="authors-robust" aria-expanded="false">
+        2 more authors
+      </a>
+      <span id="authors-robust" class="authors-rest is-hidden">
+        Gautham Bommannan, Girish Chowdhary.
+      </span>
+    </span><br>
+    In AAMAS 2018 (Extended abstract).<br>
+
+    <a href="https://arxiv.org/abs/1712.03632" target="_blank">Paper</a> |
+    <a href="https://www.youtube.com/watch?v=8xPaca3cjEU" target="_blank">Video</a> |
+    <a href="https://shuijing725.github.io/files/Supplementary_for_Robust_Deep_Reinforcement_Learning_with_Adversarial_Attacks.pd" target="_blank">Supplementary materials</a><br>
+
+
+  </div>
 </div>
 
-<!-- Date-sorted container (filled by JS) -->
+</section>
+
+
+</div>
+
 <div id="by-date" style="display:none;"></div>
 
 <style>
-  .content-switcher{display:flex;gap:.5rem;flex-wrap:wrap;margin:.75rem 0;}
-  .content-switcher button{
-    border:1px solid #d1d5db;background:#fff;padding:.4rem .7rem;border-radius:.6rem;cursor:pointer;font-weight:600;
+  /* keep existing extra styling at the end if you had any, or remove if not needed */
+  .proj h3 {
+    margin-top: 0.2rem;
+    margin-bottom: 0.1rem;
   }
-  .content-switcher button[aria-pressed="true"]{background:#2563eb;border-color:#2563eb;color:#fff;}
-
-  /* Topic buttons (for "Show all by topic") */
-  .topic-switcher{
-    display:flex;
-    gap:.5rem;
-    flex-wrap:wrap;
-    margin:.25rem 0 .75rem;
+  .proj p {
+    margin-bottom: 0.2rem;
   }
-  .topic-switcher button{
-    border:1px solid #d1d5db;
-    background:#fff;
-    padding:.3rem .6rem;
-    border-radius:.6rem;
-    cursor:pointer;
-    font-size:0.9rem;
+  .tagline {
+    font-size: 0.9rem;
+    color: #4b5563;
   }
-  .topic-switcher button.is-active{
-    background:#059669;   /* green-ish */
-    border-color:#059669;
-    color:#fff;
+  .topic-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #6b7280;
+    margin-bottom: 0.2rem;
   }
-
-  .proj{margin:1rem 0;padding:.75rem 1rem;border:1px solid #e5e7eb;border-radius:.75rem;}
-  .group{margin:1rem 0;}
-  .group h3{
-    margin:.5rem 0;
-    border-bottom:1px solid #e5e7eb;
-    padding-bottom:.25rem;
-    font-size:1rem;
-    font-weight:600;
+  .section-heading {
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
   }
 </style>
-
-
-
-
-
-
-
-
-
-
