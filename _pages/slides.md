@@ -1,10 +1,15 @@
 ---
 layout: archive
-title: "Presentations"
+title: "Talks"
 permalink: /slides/
 author_profile: true
 ---
-## Talks
+
+Please check my [YouTube channel](https://www.youtube.com/channel/UCRdZZzmk1YNBM3ZsqodtyOQ) and [Bilibili channel](https://space.bilibili.com/331114054/) for all talks. Below are some representative talks. 
+
+- [3-minute RSS Pioneer talk] Cooperative Robots that Learns for and from Human Interactions
+  <iframe width="280" height="158" src="https://www.youtube.com/embed/t4IXIdVvrNY?si=yEw1u9Cnq0Q77lsE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    
+
 - [Job talk/PhD research summary] Robot Learning to Interact in Human Spaces
   <iframe width="280" height="158" src="https://www.youtube.com/embed/e5RqOY9z1V8?si=RIhbDWOMSWWBC7dv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    
 
@@ -19,11 +24,4 @@ author_profile: true
 
 - [ICRA 2021] Decentralized Structural-RNN for Robot Crowd Navigation with Deep Reinforcement Learning  
   <iframe width="280" height="158" src="https://www.youtube.com/embed/FRWxJroI-vg?si=4H-8luMOEEuhBFdy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    
-
-## Slides
-Here are slides that summarize my work:
-- PhD preliminary exam/thesis proposal, November 2022
-  - [Robot Navigation in Interactive Environments with Structured Behavior Models](/files/prelim.pdf)
-- PhD candidacy qualifying exam, March 2020
-  - [Learning-Based Socially Aware Robot Crowd Navigation](/files/qual.pdf)
 
