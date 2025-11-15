@@ -62,30 +62,193 @@ author_profile: true
 </style>
 
 <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const qs  = sel => document.querySelector(sel);
+  const qsa = sel => Array.from(document.querySelectorAll(sel));
+
+  const byTopic  = qs('#by-topic');
+  const byDate   = qs('#by-date');
+  const summary  = qs('#content-summary');
+  const buttons  = qsa('.content-switcher [data-mode]');
+  const topicBar = qs('#topic-filters');
+
+  // ---------- "More authors" one-click reveal ----------
   document.addEventListener('click', function (e) {
     const link = e.target.closest('a.more-authors');
     if (!link) return;
     e.preventDefault();
 
     const id = link.getAttribute('data-target');
-    const rest = document.getElementById(id);
+    const rest = id && document.getElementById(id);
     if (!rest) return;
 
-    // reveal on first click; toggle if you prefer
+    // reveal remaining authors, then remove the link
     rest.classList.remove('is-hidden');
     link.setAttribute('aria-expanded', 'true');
-    // If you want a toggle instead, comment the next line and see the toggle version below
-    link.remove(); // one-way reveal
-
-    /* --- Toggle version (optional) ---
-    const expanded = link.getAttribute('aria-expanded') === 'true';
-    rest.classList.toggle('is-hidden', expanded);
-    link.setAttribute('aria-expanded', String(!expanded));
-    link.textContent = expanded ? link.dataset.moreLabel || 'show more authors'
-                                : link.dataset.lessLabel || 'show fewer';
-    ------------------------------------ */
+    link.remove();
   });
+
+  // ---------- Helpers for projects ----------
+  function readProjects(){
+    return qsa('#by-topic .proj').map(node => ({
+      node,
+      topic: node.dataset.topic || 'Others',
+      date:  node.dataset.date  || '1970-01-01',
+      selected: (node.dataset.selected || 'false') === 'true'
+    }));
+  }
+
+  // Build topic buttons in desired custom order
+  function buildTopicButtons(items){
+    if (!topicBar) return;
+
+    const desiredOrder = [
+      'Human modeling',
+      'Robust planning',
+      'Continual adaptation',
+      'Others'
+    ];
+
+    const topicsSet = [...new Set(items.map(i => i.topic))];
+
+    const topics = [
+      ...desiredOrder.filter(t => topicsSet.includes(t)),
+      ...topicsSet.filter(t => !desiredOrder.includes(t)).sort()
+    ];
+
+    topicBar.innerHTML = '';
+
+    topics.forEach(topic => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = topic;
+      btn.dataset.topic = topic;
+
+      btn.addEventListener('click', () => {
+        // highlight active
+        qsa('#topic-filters button').forEach(b =>
+          b.classList.toggle('is-active', b === btn)
+        );
+
+        // show only this topic
+        items.forEach(i => {
+          i.node.style.display = (i.topic === topic) ? '' : 'none';
+        });
+
+        const count = items.filter(i => i.topic === topic).length;
+        if (summary) {
+          summary.textContent = `Showing ${count} item(s) in topic “${topic}”.`;
+        }
+      });
+
+      topicBar.appendChild(btn);
+    });
+
+    // auto-select first topic (Human modeling if present)
+    const firstBtn = topicBar.querySelector('button');
+    if (firstBtn) firstBtn.click();
+  }
+
+  function setMode(mode){
+    const items = readProjects();
+
+    // Global newest → oldest sort for ALL modes
+    const sortedItems = items.slice().sort((a, b) => b.date.localeCompare(a.date));
+
+    // Update button pressed state
+    buttons.forEach(b =>
+      b.setAttribute('aria-pressed', String(b.dataset.mode === mode))
+    );
+
+    const counts = {
+      all: sortedItems.length,
+      selected: sortedItems.filter(i => i.selected).length,
+      topics: new Set(sortedItems.map(i => i.topic)).size
+    };
+
+    if (mode === 'selected') {
+      if (byDate) byDate.style.display  = 'none';
+      if (byTopic) byTopic.style.display = '';
+      if (topicBar) topicBar.style.display = 'none';
+
+      // Enforce newest → oldest order and filter by selected
+      sortedItems.forEach(i => {
+        if (byTopic) byTopic.appendChild(i.node);
+        i.node.style.display = i.selected ? '' : 'none';
+      });
+
+      if (summary) {
+        summary.textContent = `Showing ${counts.selected} selected item(s) of ${counts.all}.`;
+      }
+
+    } else if (mode === 'topic') {
+      if (byDate) byDate.style.display  = 'none';
+      if (byTopic) byTopic.style.display = '';
+      if (topicBar) topicBar.style.display = 'flex';
+
+      // Enforce newest → oldest order before topic filtering
+      sortedItems.forEach(i => {
+        if (byTopic) byTopic.appendChild(i.node);
+        i.node.style.display = '';
+      });
+
+      buildTopicButtons(sortedItems);
+
+    } else { // mode === 'date'
+      if (byTopic) byTopic.style.display = 'none';
+      if (byDate)  byDate.style.display  = '';
+      if (topicBar) topicBar.style.display = 'none';
+      if (byDate) byDate.innerHTML = '';
+
+      const sorted = sortedItems;
+
+      // Group by YEAR only
+      const yearMap = new Map();
+      sorted.forEach(i => {
+        const year = (i.date || '1970-01-01').slice(0, 4);
+        if (!yearMap.has(year)) yearMap.set(year, []);
+        yearMap.get(year).push(i);
+      });
+
+      // Render groups by year (newest year first)
+      [...yearMap.keys()].sort((a,b) => b.localeCompare(a)).forEach(year => {
+        const g = document.createElement('div');
+        g.className = 'group';
+
+        const h = document.createElement('h3');
+        h.textContent = year;
+        g.appendChild(h);
+
+        yearMap.get(year).forEach(i => {
+          g.appendChild(i.node.cloneNode(true));
+        });
+
+        if (byDate) byDate.appendChild(g);
+      });
+
+      if (summary) {
+        summary.textContent = `Showing all ${counts.all} item(s) grouped by year (newest first).`;
+      }
+    }
+
+    // Update URL ?mode=
+    const url = new URL(window.location.href);
+    url.searchParams.set('mode', mode);
+    window.history.replaceState({}, '', url);
+  }
+
+  // Wire top buttons
+  buttons.forEach(b =>
+    b.addEventListener('click', () => setMode(b.dataset.mode))
+  );
+
+  // Default: show all by date (unless URL overrides)
+  const initialMode =
+    new URL(window.location.href).searchParams.get('mode') ?? 'date';
+  setMode(initialMode);
+});
 </script>
+
 
 *, † indicate equal contributions
 
@@ -673,174 +836,7 @@ Rogers. </span>
 </style>
 
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const qs  = sel => document.querySelector(sel);
-  const qsa = sel => Array.from(document.querySelectorAll(sel));
 
-  const byTopic  = qs('#by-topic');
-  const byDate   = qs('#by-date');
-  const summary  = qs('#content-summary');
-  const buttons  = qsa('.content-switcher [data-mode]');
-  const topicBar = qs('#topic-filters');
-
-  // Read projects from the topic container
-  function readProjects(){
-    return qsa('#by-topic .proj').map(node => ({
-      node,
-      // default topic label if missing
-      topic: node.dataset.topic || 'Others',
-      date:  node.dataset.date  || '1970-01-01',
-      selected: (node.dataset.selected || 'false') === 'true'
-    }));
-  }
-
-  // Build topic buttons in desired order and wire up filtering
-  function buildTopicButtons(items){
-    const desiredOrder = [
-      'Human modeling',
-      'Robust planning',
-      'Continual adaptation',
-      'Others'
-    ];
-
-    const topicsSet = [...new Set(items.map(i => i.topic))];
-
-    // First: your preferred order (only those that actually exist)
-    // Then: any remaining topics, alphabetically
-    const topics = [
-      ...desiredOrder.filter(t => topicsSet.includes(t)),
-      ...topicsSet.filter(t => !desiredOrder.includes(t)).sort()
-    ];
-
-    if (!topicBar) return;
-    topicBar.innerHTML = '';
-
-    topics.forEach(topic => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.textContent = topic;
-      btn.dataset.topic = topic;
-
-      btn.addEventListener('click', () => {
-        // highlight active topic button
-        qsa('#topic-filters button').forEach(b =>
-          b.classList.toggle('is-active', b === btn)
-        );
-
-        // show only this topic (sorted order already enforced)
-        items.forEach(i => {
-          i.node.style.display = (i.topic === topic) ? '' : 'none';
-        });
-
-        const count = items.filter(i => i.topic === topic).length;
-        summary.textContent = `Showing ${count} item(s) in topic “${topic}”.`;
-      });
-
-      topicBar.appendChild(btn);
-    });
-
-    // auto-select first topic (e.g., Human modeling, if present)
-    const firstBtn = topicBar.querySelector('button');
-    if (firstBtn) firstBtn.click();
-  }
-
-  function setMode(mode){
-    const items = readProjects();
-
-    // Global newest → oldest sort by date for ALL modes
-    const sortedItems = items.slice().sort((a, b) => b.date.localeCompare(a.date));
-
-    // Update button pressed state
-    buttons.forEach(b =>
-      b.setAttribute('aria-pressed', String(b.dataset.mode === mode))
-    );
-
-    const counts = {
-      all: sortedItems.length,
-      selected: sortedItems.filter(i => i.selected).length,
-      topics: new Set(sortedItems.map(i => i.topic)).size
-    };
-
-    if (mode === 'selected') {
-      if (byDate) byDate.style.display  = 'none';
-      if (byTopic) byTopic.style.display = '';
-      if (topicBar) topicBar.style.display = 'none';
-
-      // Enforce newest → oldest order in the DOM and filter by selected
-      sortedItems.forEach(i => {
-        byTopic.appendChild(i.node);  // re-append in sorted order
-        i.node.style.display = i.selected ? '' : 'none';
-      });
-
-      summary.textContent = `Showing ${counts.selected} selected item(s) of ${counts.all}.`;
-
-    } else if (mode === 'topic') {
-      if (byDate) byDate.style.display  = 'none';
-      if (byTopic) byTopic.style.display = '';
-      if (topicBar) topicBar.style.display = 'flex';
-
-      // Enforce newest → oldest order in the DOM before topic filtering
-      sortedItems.forEach(i => {
-        byTopic.appendChild(i.node);
-        i.node.style.display = '';  // visible; topic buttons will filter
-      });
-
-      buildTopicButtons(sortedItems);
-      // summary is updated when a topic button is clicked
-
-    } else { // mode === 'date'
-      if (byTopic) byTopic.style.display = 'none';
-      if (byDate)  byDate.style.display  = '';
-      if (topicBar) topicBar.style.display = 'none';
-      if (byDate) byDate.innerHTML = '';
-
-      const sorted = sortedItems; // already newest → oldest
-
-      // Group by YEAR only
-      const yearMap = new Map();
-      sorted.forEach(i => {
-        const year = (i.date || '1970-01-01').slice(0, 4);
-        if (!yearMap.has(year)) yearMap.set(year, []);
-        yearMap.get(year).push(i);
-      });
-
-      // Render groups by year (newest year first)
-      [...yearMap.keys()].sort((a,b) => b.localeCompare(a)).forEach(year => {
-        const g = document.createElement('div');
-        g.className = 'group';
-
-        const h = document.createElement('h3');
-        h.textContent = year;   // only show year
-        g.appendChild(h);
-
-        yearMap.get(year).forEach(i => {
-          g.appendChild(i.node.cloneNode(true));
-        });
-
-        byDate.appendChild(g);
-      });
-
-      summary.textContent = `Showing all ${counts.all} item(s) grouped by year (newest first).`;
-    }
-
-    // reflect in URL
-    const url = new URL(window.location.href);
-    url.searchParams.set('mode', mode);
-    window.history.replaceState({}, '', url);
-  }
-
-  // Wire top buttons
-  buttons.forEach(b =>
-    b.addEventListener('click', () => setMode(b.dataset.mode))
-  );
-
-  // Initial mode from URL or default to **"date"**
-  const initialMode =
-    new URL(window.location.href).searchParams.get('mode') ?? 'date';
-  setMode(initialMode);
-});
-</script>
 
 
 
