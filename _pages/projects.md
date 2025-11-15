@@ -4,29 +4,25 @@ title: "Research"
 permalink: /projects/
 author_profile: true
 ---
+
 <style>
   .authors-rest.is-hidden { display: none; }
   .pub-authors a.more-authors { text-decoration: underline; }
+
   .pub .info {
     flex: 1 1 auto;
     min-width: 0;
-    font-size: 0.95rem;   /* slightly smaller text */
-    line-height: 1.35;    /* keep good readability */
+    font-size: 0.95rem;
+    line-height: 1.35;
   }
 
-  /* Base: remove card-like box, use simple spacing */
   .proj{
     padding:0;
     margin:1.1rem 0;
   }
-
-  .proj h2{
-    font-size:1.2rem;
-    margin-bottom:.2rem;
-  }
-
-  .proj p{
-    margin:.1rem 0;
+  .proj + .proj {
+    border-top:1px solid #eee;
+    padding-top:18px;
   }
 
   .content-switcher{
@@ -55,7 +51,6 @@ author_profile: true
     margin-bottom:.5rem;
   }
 
-  /* Publication row: image left, text right, no surrounding box */
   .pub{
     display:flex;
     gap:16px;
@@ -65,8 +60,6 @@ author_profile: true
     padding:0;
     margin:18px 0;
   }
-
-  /* Larger thumbnail (1.5× original-ish) */
   .pub .thumb{
     flex:0 0 320px;
     max-width:320px;
@@ -77,18 +70,7 @@ author_profile: true
     display:block;
     border-radius:6px;
   }
-
   .pub .info{ flex:1 1 auto; min-width:0; }
-  .pub .info h2,.pub .info h3{ margin-top:.1rem; margin-bottom:.25rem; }
-
-  .proj + .proj { border-top:1px solid #eee; padding-top:18px; }
-  .group{ margin:1rem 0; }
-  .group > h3{
-    margin:.25rem 0 .5rem;
-    font-size:1.05rem;
-    font-weight:600;
-    color:#111827;
-  }
 
   #topic-filters{
     display:flex;
@@ -110,214 +92,21 @@ author_profile: true
     color:#fff;
   }
 
-  /* On narrow screens stack image + text */
   @media (max-width:640px){
     .pub{ flex-direction:column; }
     .pub .thumb{ max-width:100%; }
   }
 
   .pub .info strong {
-    font-size: 1rem;      /* keep titles reasonable */
+    font-size: 1rem;
     font-weight: 600;
   }
 </style>
 
+*, † indicate equal contributions
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  function qs(sel)  { return document.querySelector(sel); }
-  function qsa(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
-
-  var byTopic  = qs('#by-topic');
-  var byDate   = qs('#by-date');
-  var summary  = qs('#content-summary');
-  var buttons  = qsa('.content-switcher [data-mode]');
-  var topicBar = qs('#topic-filters');
-
-  // ---------- "More authors" toggle ----------
-  document.addEventListener('click', function (e) {
-    var target = e.target || e.srcElement;
-
-    // walk up until we find an <a class="more-authors"> or hit document
-    while (target && target !== document &&
-           !(target.tagName === 'A' && target.classList.contains('more-authors'))) {
-      target = target.parentNode;
-    }
-    if (!target || target === document) return;
-
-    e.preventDefault();
-    var id   = target.getAttribute('data-target');
-    var rest = id && document.getElementById(id);
-    if (!rest) return;
-
-    rest.classList.remove('is-hidden');
-    target.setAttribute('aria-expanded', 'true');
-    if (target.parentNode) {
-      target.parentNode.removeChild(target);
-    }
-  });
-
-  function readProjects() {
-    var items = [];
-    qsa('#by-topic .proj').forEach(function (node) {
-      items.push({
-        node: node,
-        topic: node.getAttribute('data-topic') || 'Other',
-        date:  node.getAttribute('data-date')  || '1970-01-01',
-        selected: (node.getAttribute('data-selected') || 'false') === 'true'
-      });
-    });
-    return items;
-  }
-
-  function buildTopicButtons(items) {
-    topicBar.innerHTML = '';
-
-    var desiredOrder = ['Human modeling', 'Robust planning', 'Continual adaptation', 'Others'];
-
-    // Collect which topics actually exist
-    var topicsSet = {};
-    items.forEach(function (i) { topicsSet[i.topic] = true; });
-
-    var topics = [];
-    desiredOrder.forEach(function (t) {
-      if (topicsSet[t]) topics.push(t);
-    });
-    // Add any extra topics at the end (if we ever have any)
-    for (var t in topicsSet) {
-      if (topicsSet.hasOwnProperty(t) && desiredOrder.indexOf(t) === -1) {
-        topics.push(t);
-      }
-    }
-
-    topics.forEach(function (topic) {
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.textContent = topic;
-      btn.setAttribute('data-topic', topic);
-
-      btn.addEventListener('click', function () {
-        qsa('#topic-filters button').forEach(function (b) {
-          b.classList.toggle('is-active', b === btn);
-        });
-
-        var count = 0;
-        items.forEach(function (i) {
-          if (i.topic === topic) {
-            i.node.style.display = '';
-            count += 1;
-          } else {
-            i.node.style.display = 'none';
-          }
-        });
-
-        summary.textContent = 'Showing ' + count + ' item(s) in topic "' + topic + '".';
-      });
-
-      topicBar.appendChild(btn);
-    });
-
-    var firstBtn = topicBar.querySelector('button');
-    if (firstBtn) firstBtn.click();
-  }
-
-  function setMode(mode) {
-    var items = readProjects();
-
-    buttons.forEach(function (b) {
-      var pressed = (b.getAttribute('data-mode') === mode) ? 'true' : 'false';
-      b.setAttribute('aria-pressed', pressed);
-    });
-
-    var total = items.length;
-    var selectedCount = items.filter(function (i) { return i.selected; }).length;
-    var topicsSet = {};
-    items.forEach(function (i) { topicsSet[i.topic] = true; });
-    var topicCount = Object.keys(topicsSet).length; // currently unused, but kept for clarity
-
-    if (mode === 'selected') {
-      byDate.style.display  = 'none';
-      byTopic.style.display = '';
-      topicBar.style.display = 'none';
-
-      items.forEach(function (i) {
-        i.node.style.display = i.selected ? '' : 'none';
-      });
-
-      summary.textContent =
-        'Showing ' + selectedCount + ' selected item(s) of ' + total + '.';
-
-    } else if (mode === 'topic') {
-      byDate.style.display  = 'none';
-      byTopic.style.display = '';
-      topicBar.style.display = 'flex';
-
-      items.forEach(function (i) { i.node.style.display = ''; });
-      buildTopicButtons(items);
-
-      // summary is updated when topic buttons are clicked
-
-    } else { // mode === 'date'
-      byTopic.style.display = 'none';
-      byDate.style.display  = '';
-      topicBar.style.display = 'none';
-      byDate.innerHTML = '';
-
-      // sort by date (newest first)
-      var sorted = items.slice().sort(function (a, b) {
-        return b.date.localeCompare(a.date);
-      });
-
-      // group by year
-      var yearMap = {};
-      sorted.forEach(function (i) {
-        var year = (i.date || '1970-01-01').slice(0, 4);
-        if (!yearMap[year]) yearMap[year] = [];
-        yearMap[year].push(i);
-      });
-
-      // render groups newest year first
-      Object.keys(yearMap).sort(function (a, b) { return b.localeCompare(a); })
-        .forEach(function (year) {
-          var g = document.createElement('div');
-          g.className = 'group';
-
-          var h = document.createElement('h3');
-          h.textContent = year;
-          g.appendChild(h);
-
-          yearMap[year].forEach(function (i) {
-            g.appendChild(i.node.cloneNode(true));
-          });
-
-          byDate.appendChild(g);
-        });
-
-      summary.textContent = 'Showing all ' + total + ' item(s) grouped by year.';
-    }
-
-    // update URL query param (optional; safe if URL exists)
-    if (typeof URL === 'function') {
-      var url = new URL(window.location.href);
-      url.searchParams.set('mode', mode);
-      window.history.replaceState({}, '', url);
-    }
-  }
-
-  // hook up the mode buttons
-  buttons.forEach(function (b) {
-    b.addEventListener('click', function () {
-      setMode(b.getAttribute('data-mode'));
-    });
-  });
-
-  // default mode: show all by date
-  setMode('date');
-});
-</script>
-
-
-<div class="content-switcher">
+<!-- View mode buttons -->
+<div class="content-switcher" role="toolbar" aria-label="Content view">
   <button type="button" data-mode="selected" aria-pressed="false">
     Show selected
   </button>
@@ -330,10 +119,11 @@ document.addEventListener('DOMContentLoaded', function () {
 </div>
 
 <p id="content-summary" class="summary-line"></p>
-
 <div id="topic-filters"></div>
 
+<!-- ========== MAIN CONTAINER FOR TOPIC-VIEW ========== -->
 <div id="by-topic">
+
 
 <!-- -------------- TOPIC SECTIONS (unchanged content) -------------- -->
 <!-- Keep all your <section class="proj" ...> blocks here exactly as before.
@@ -861,33 +651,12 @@ Rogers. </span>
 </section>
 
 
+
+
 </div>
 
+<!-- ========== DATE-GROUPED VIEW (FILLED BY JS) ========== -->
 <div id="by-date" style="display:none;"></div>
 
-<style>
-  /* keep existing extra styling at the end if you had any, or remove if not needed */
-  .proj h3 {
-    margin-top: 0.2rem;
-    margin-bottom: 0.1rem;
-  }
-  .proj p {
-    margin-bottom: 0.2rem;
-  }
-  .tagline {
-    font-size: 0.9rem;
-    color: #4b5563;
-  }
-  .topic-label {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: #6b7280;
-    margin-bottom: 0.2rem;
-  }
-  .section-heading {
-    margin-top: 1.5rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-  }
-</style>
+<!-- Load behavior from external JS to avoid Markdown mangling -->
+<script src="{{ '/assets/js/projects.js' | relative_url }}"></script>
