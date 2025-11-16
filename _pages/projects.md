@@ -1,7 +1,7 @@
 ---
 layout: archive
 title: "Research"
-permalink: /projects/
+permalink: /research/
 author_profile: true
 ---
 
@@ -114,7 +114,7 @@ author_profile: true
     Show all by date
   </button>
   <button type="button" data-mode="topic" aria-pressed="false">
-    Show all by topic
+    Show by topic
   </button>
 </div>
 
@@ -172,7 +172,7 @@ author_profile: true
   <div class="info">
     <strong>Gotta Scoop ’Em All: Sim-and-Real Co-Training of Graph-based Neural Dynamics for Long-Horizon Scooping</strong><br>
     <span class="pub-authors">
-      Kaiwen Hong, Haonan Chen*, Jiaming Xu, Runxuan Wang, Kaylan Wang, Mingtong Zhang, <strong>Shuijing Liu</strong>, Yifan Zhu, Yunzhu Li, Katherine Driggs-Campbell.
+      Kaiwen Hong, Haonan Chen*, Jiaming Xu*, Runxuan Wang*, Kaylan Wang, Mingtong Zhang, <strong>Shuijing Liu</strong>, Yifan Zhu, Yunzhu Li, Katherine Driggs-Campbell.
     </span><br>
     Under review, 2025. <br>
   </div>
@@ -281,7 +281,7 @@ author_profile: true
   <div class="info">
     <strong>Learning Coordinated Bimanual Manipulation Policies using State Diffusion and Inverse Dynamics Models</strong><br>
     <span class="pub-authors">
-      Haonan Chen, Jiaming Xu, Lily Sheng, Tianchen Ji, <strong>Shuijing Liu</strong>, Yunzhu Li, Katherine Driggs-Campbell.
+      Haonan Chen, Jiaming Xu*, Lily Sheng*, Tianchen Ji, <strong>Shuijing Liu</strong>, Yunzhu Li, Katherine Driggs-Campbell.
     </span><br>
     In ICRA 2025. <br>
     <a href="https://arxiv.org/abs/2503.23271" target="_blank">Paper</a> |
@@ -440,7 +440,7 @@ author_profile: true
   <div class="info">
     <strong>Structural Attention-Based Recurrent Variational Autoencoder for Highway Vehicle Anomaly Detection</strong><br>
     <span class="pub-authors">
-      Neeloy Chakraborty, Aamir Hasan*, <strong>Shuijing Liu</strong>, Tianchen Ji, Eric Liang, D. Livingston McPherson, Katherine Driggs-Campbell.
+      Neeloy Chakraborty, <strong>Shuijing Liu*</strong>, Aamir Hasan*, Tianchen Ji*, Eric Liang, D. Livingston McPherson, Katherine Driggs-Campbell.
     </span><br>
     In AAMAS 2023 (Full paper).<br>
     <a href="https://arxiv.org/abs/2301.03634" target="_blank">Paper</a> |

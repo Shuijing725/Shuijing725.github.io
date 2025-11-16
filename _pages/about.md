@@ -11,11 +11,11 @@ redirect_from:
 <div style="font-size:15px; color:gray;">How to pronounce my name: Shway-Jeeng Leo</div>   
 <div style="height: 20px;"></div> <!-- Adds a 15px gap -->
 Welcome to my personal website! I'm a postdoc at UT Austin, 
-advised by Prof. [Yuke Zhu](https://yukezhu.me/), Prof. [Peter Stone](https://www.cs.utexas.edu/~pstone/), and Prof. [Joydeep Biswas](https://www.joydeepb.com/).
+advised by [Yuke Zhu](https://yukezhu.me/), [Peter Stone](https://www.cs.utexas.edu/~pstone/), and [Joydeep Biswas](https://www.joydeepb.com/).
 In 2024, I obtained my PhD from [University of Illinois at Urbana Champaign](https://illinois.edu), 
-advised by Prof. [Katherine Driggs-Campbell](https://krdc.web.illinois.edu).
+advised by [Katherine Driggs-Campbell](https://krdc.web.illinois.edu).
 
-Previously, I earned my Bachelor's Degree in Computer Engineering from University of Illinois at Urbana Champaign in May 2018. Before that, I was born and raised in [Zhengzhou](https://www.google.com/maps/place/Zhengzhou,+Henan,+China/@34.7425008,113.4983694,11z/data=!3m1!4b1!4m6!3m5!1s0x35d76594f09b6a9d:0x7932ee19f4cced2c!8m2!3d34.7472499!4d113.62493!16zL20vMDFxOXpz?entry=ttu), China.  
+Previously, I earned my Bachelor's Degree from University of Illinois at Urbana Champaign in May 2018. Before that, I was born and raised in [Zhengzhou](https://www.google.com/maps/place/Zhengzhou,+Henan,+China/@34.7425008,113.4983694,11z/data=!3m1!4b1!4m6!3m5!1s0x35d76594f09b6a9d:0x7932ee19f4cced2c!8m2!3d34.7472499!4d113.62493!16zL20vMDFxOXpz?entry=ttu), China.  
 
 [**[CV]**](/files/Shuijing_Liu_cv_public.pdf)  [**[Research statement]**](/files/Research_statement_faculty_Shuijing_Liu.pdf)  [**[Teaching statement]**](/files/Teaching_statement_faculty_Shuijing_Liu.pdf)  [**[Service/DEI statement]**](/files/Service_DEI_statement_faculty_Shuijing_Liu.pdf)   
 
@@ -24,16 +24,15 @@ Previously, I earned my Bachelor's Degree in Computer Engineering from Universit
 Research Interests:
 ---
 My goal is to enable robots to move beyond tool-like roles and instead collaborate with us as partners.
-Toward this goal, my research treats humans, the end-users and beneficiaries of robots, as essential stakeholders in robot learning. 
-My work is centered around **in-the-wild learning and deployment of human-centered robotics** that infer and support human needs in the open world, operate robustly alongside human crowds,
-and adapt efficiently through natural interactions with humans.   
+To achieve **trustworthy human-robot partnership**, my research puts humans at the center of robot learning. 
+My work is centered around in-the-wild learning and deployment of human-centered robotics that **communicates** with humans, **collaborates** alongside humans, and **continually adapts** to changes in human environments.   
 
 My long term vision is to establish **a foundamental human-centered robot learning paradigm** that empowers capable and socially aware robot partners in everyday life. 
-Advancing human-centered robot learning requires expanding robot capabilities in human-centric tasks, training robots with data that reflect human values, and fostering trustworthy human–robot communication.
+Advancing human-centered robot learning requires expanding robot capabilities in human-centric tasks, training robots with data that reflect human values, and improving the explainability of robot behaviors.
 
 I advocate for robot learning from the people, with the people, and for the people.   
 
-**I'm open to research discussion and collaboration, please feel free to get in touch!**  
+*I'm open to research discussion and collaboration, please feel free to get in touch!*   
 
 Outreach
 ---
@@ -43,6 +42,7 @@ If you would like to chat with me, please fill [this form](https://docs.google.c
 
 News
 ---
+- **11/13/2025:** Our journal article [HEIGHT: Heterogeneous Interaction Graph Transformer for Robot Navigation in Crowded and Constrained Environments](https://sites.google.com/view/crowdnav-height/home) is accepted to [T-ASE](https://www.ieee-ras.org/publications/t-ase)!
 - **04/11/2025:** I'm honored to be part of [RSS Pioneers cohort](https://sites.google.com/view/rsspioneers2025/participants) this year!
 - **08/16/2024:** I started my postdoc at UT Austin RPL Lab! Also, I'm selected as an [MIT EECS Rising Star in 2024](https://risingstars-eecs.mit.edu/participants/?y=2024&area=robotics)!
 - **05/23/2024:** I passed my thesis defense! Big thanks to my advisor, my committee, and my colleagues in HCA lab!
