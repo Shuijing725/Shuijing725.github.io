@@ -17,7 +17,7 @@ advised by [Katherine Driggs-Campbell](https://krdc.web.illinois.edu).
 
 Previously, I earned my Bachelor's Degree from University of Illinois at Urbana Champaign in May 2018. Before that, I was born and raised in [Zhengzhou](https://www.google.com/maps/place/Zhengzhou,+Henan,+China/@34.7425008,113.4983694,11z/data=!3m1!4b1!4m6!3m5!1s0x35d76594f09b6a9d:0x7932ee19f4cced2c!8m2!3d34.7472499!4d113.62493!16zL20vMDFxOXpz?entry=ttu), China.  
 
-[**[CV]**](/files/Shuijing_Liu_cv_public.pdf)  [**[Research statement]**](/files/Research_statement_faculty_Shuijing_Liu.pdf)  [**[Teaching statement]**](/files/Teaching_statement_faculty_Shuijing_Liu.pdf)  [**[Service/DEI statement]**](/files/Service_DEI_statement_faculty_Shuijing_Liu.pdf)   
+[**[CV]**](/files/Shuijing_Liu_cv_faculty.pdf)  [**[Research statement]**](/files/Research_statement_faculty_Shuijing_Liu.pdf)  [**[Teaching statement]**](/files/Teaching_statement_faculty_Shuijing_Liu.pdf)  [**[Service/DEI statement]**](/files/Service_DEI_statement_faculty_Shuijing_Liu.pdf)   
 
 **<span style="color:red;">I'm on academic job market for 2025-26 cycle. If you are aware of any opportunities, please contact me at <a href="mailto:shuijing.liu@utexas.edu">shuijing.liu@utexas.edu</a>!</span>**  
 
@@ -27,8 +27,8 @@ My goal is to enable robots to move beyond tool-like roles and instead collabora
 To achieve **trustworthy human-robot partnership**, my research puts humans at the center of robot learning. 
 My work is centered around in-the-wild learning and deployment of human-centered robotics that **communicates** with humans, **collaborates** alongside humans, and **continually adapts** to changes in human environments.   
 
-My long term vision is to establish **a foundamental human-centered robot learning paradigm** that empowers capable and socially aware robot partners in everyday life. 
-Advancing human-centered robot learning requires expanding robot capabilities in human-centric tasks, training robots with data that reflect human values, and improving the explainability of robot behaviors.
+My long term vision is to establish **a fundamental human-centered robot learning paradigm** that empowers capable and socially aware robot partners in everyday life. 
+Advancing human-centered robot learning requires expanding robot capabilities in collaborative tasks, learning from deployment data that reflects human values, and designing communication interfaces in a user-centric way.
 
 I advocate for robot learning from the people, with the people, and for the people.   
 
